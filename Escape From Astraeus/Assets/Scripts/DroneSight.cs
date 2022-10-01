@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class DroneSight : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float rayLength = 10.0f;
+    public float rayAngle;
+    
+    
     void Start()
     {
         
@@ -13,16 +16,11 @@ public class DroneSight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //rayAngle = rayAngle * Mathf.Deg2Rad;
+        Debug.DrawRay(transform.position, transform.TransformDirection(0, 0, rayAngle) * rayLength, Color.red);
     }
 
-     void OnCollisionEnter(Collision col) 
-    {
-         if (col.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Player Spotted");
-        }
-    }
+    
 
     
 }

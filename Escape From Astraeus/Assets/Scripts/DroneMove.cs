@@ -14,6 +14,7 @@ public class DroneMove : MonoBehaviour
     public float visDistance;
     public int randomPP;
     public Vector3 visionBox;
+    public bool On;
     
    
     // Start is called before the first frame update
@@ -26,8 +27,9 @@ public class DroneMove : MonoBehaviour
     void Update()
     {
          
-
-          drone.destination = patrolPoints[currentPP].transform.position;
+        if (On)
+        {
+            drone.destination = patrolPoints[currentPP].transform.position;
 
           if (Vector3.Distance(transform.position, patrolPoints[currentPP].transform.position) < 2)
           {
@@ -36,6 +38,8 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
+        }
+          
 
          
     }
