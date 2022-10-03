@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerControls;
     private InputAction move;
     public Rigidbody playerRb;
-    public float playeRotspeed = 5.0f;
+    public float playeRotspeed = 50.0f;
     public float playerSpeed = 5.0f;
 
     private void Awake() 
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //Player Movement
         moveDirection = move.ReadValue<Vector2>();
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
 
-        transform.Translate(rotate,0,forward);
-        //transform.Rotate(0,rotate,0);
+        transform.Translate(0,0,forward);
+        transform.Rotate(0,rotate,0);
     }
 }
