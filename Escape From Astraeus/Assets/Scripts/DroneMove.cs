@@ -14,7 +14,7 @@ public class DroneMove : MonoBehaviour
     public float visDistance;
     public int randomPP;
     public Vector3 visionBox;
-    public bool On;
+    public bool On, playerInView;
     private DroneSight droneSight;
     public GameObject player;
 
