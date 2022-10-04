@@ -58,12 +58,14 @@ public class PlayerController : MonoBehaviour
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
 
+        //Sets Robot 1 controls
         if (Bot1Active)
         {
             Bot1.transform.Translate(0,0,forward);
             Bot1.transform.Rotate(0,rotate,0);
         }
 
+        //Sets Robots 2 controls
         if (Bot2Active)
         {
             Bot2.transform.Translate(0,0,forward);
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     void Update() 
     {
+        // If tab is pressed switches between two robots.
         if(BotSwitch.triggered)
         {
             if(Bot1Active)
