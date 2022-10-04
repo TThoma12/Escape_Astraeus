@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Bot2Active = false;
-        Bot1Active = true;
+        
     }
 
     // Update is called once per frame

@@ -17,6 +17,8 @@ public class DroneMove : MonoBehaviour
     public bool On, playerInView;
     private DroneSight droneSight;
     public GameObject player;
+    public GameObject playerSpawn;
+    private PlayerController playerController;
 
     
    
@@ -25,6 +27,7 @@ public class DroneMove : MonoBehaviour
     {
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
+        playerController = FindObjectOfType<PlayerController>();
         
     }
 
@@ -40,6 +43,7 @@ public class DroneMove : MonoBehaviour
         if(droneSight.canSeePlayer)
         {
             drone.destination = player.transform.position;
+            player.transform.position = playerSpawn.transform.position;
         }
 
         
