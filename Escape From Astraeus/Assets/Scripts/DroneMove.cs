@@ -14,20 +14,52 @@ public class DroneMove : MonoBehaviour
     public float visDistance;
     public int randomPP;
     public Vector3 visionBox;
+    public bool On, playerInView;
+    private DroneSight droneSight;
+    public GameObject player;
+    public GameObject playerSpawn;
+    private PlayerController playerController;
+
     
    
     // Start is called before the first frame update
     void Start()
     {
         drone = GetComponent<NavMeshAgent>();
+        droneSight = GetComponent<DroneSight>();
+        playerController = FindObjectOfType<PlayerController>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
          
+        if (On && !droneSight.canSeePlayer)
+        {
+           DronePatrol();
+        }
 
-          drone.destination = patrolPoints[currentPP].transform.position;
+        if(droneSight.canSeePlayer)
+        {
+            drone.destination = player.transform.position;
+            player.transform.position = playerSpawn.transform.position;
+        }
+
+        
+          
+
+         
+    }
+
+    void DroneRushPlayer()
+    {
+
+    }
+
+    void DronePatrol()
+    {
+         drone.destination = patrolPoints[currentPP].transform.position;
 
           if (Vector3.Distance(transform.position, patrolPoints[currentPP].transform.position) < 2)
           {
@@ -36,8 +68,6 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
-
-         
     }
     
    void OnDrawGizmos() 
