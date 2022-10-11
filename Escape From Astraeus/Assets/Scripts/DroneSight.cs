@@ -23,20 +23,15 @@ public class DroneSight : MonoBehaviour
         //playerRef = GameObject.FindGameObjectWithTag("Player");
         playerController = FindObjectOfType<PlayerController>();
         StartCoroutine(FOVRoutine());
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        if(playerController.Bot1Active)
-        {
-            playerRef = playerBots[0];
-        }
-        if(playerController.Bot2Active)
-        {
-            playerRef = playerBots[1];
-        }
+     
+        
     }
 
     private IEnumerator FOVRoutine()
