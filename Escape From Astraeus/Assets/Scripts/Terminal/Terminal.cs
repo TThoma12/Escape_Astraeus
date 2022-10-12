@@ -10,11 +10,12 @@ public class Terminal : MonoBehaviour
     public GameObject drone;
     private DroneMove droneMove;
     private DroneSight droneSight;
-    private PlayerController playerController;
+    public GameObject playerController;
+    private PlayerController playerControllerScript;
     private bool playerOnTerminal;
-    void Start()
+    void Start()    
     {
-        playerController = FindObjectOfType<PlayerController>();
+        playerControllerScript = playerController.GetComponent<PlayerController>();
         droneMove = drone.GetComponent<DroneMove>();
         droneSight = drone.GetComponent<DroneSight>();
         terminalUi.SetActive(false);
@@ -23,7 +24,7 @@ public class Terminal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerController.Interact.triggered)
+        if (playerControllerScript.Interact.triggered)
         {
             Debug.Log("E");
             if (playerOnTerminal)

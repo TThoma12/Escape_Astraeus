@@ -99,11 +99,13 @@ public class PlayerController : MonoBehaviour
 
                 playerSwitcher.SwitchToBot1();
             }
-
-            
-
-           
+  
         }
+
+        // if(Interact.triggered)
+        // {
+        //     Debug.Log("EE");
+        // }
     }
 
     
