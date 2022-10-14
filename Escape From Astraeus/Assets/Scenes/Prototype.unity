@@ -282,6 +282,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d061e1519f86409e7aed54b63e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interact:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4ac760cb-fc7b-4d45-8048-343826d36361
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   playeRotspeed: 90
   playerSpeed: 15
   Bot1Active: 1
@@ -296,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37835153}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.30202174, y: 0.25368977, z: 0.12255108}
+  m_LocalPosition: {x: 0.30202174, y: 0.25368977, z: 0.122550964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2088,9 +2097,6 @@ MonoBehaviour:
   radius: 8
   angle: 98
   playerRef: {fileID: 0}
-  playerBots:
-  - {fileID: 862925456}
-  - {fileID: 97505683}
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -2098,6 +2104,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   canSeePlayer: 0
+  playerController: {fileID: 37835153}
+  playerBots:
+  - {fileID: 862925456}
+  - {fileID: 97505683}
 --- !u!1001 &708301050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3389,6 +3399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f98a8722dc1c24fbef39d4384e7b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terminalUi: {fileID: 64932363}
+  drone: {fileID: 684753758}
+  playerController: {fileID: 37835153}
 --- !u!1001 &1182287199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3859,8 +3872,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
+      propertyPath: Interact.m_Id
+      value: 835124d6-5810-4ed5-b12e-f6cbdf53031d
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
       propertyPath: BotSwitch.m_Id
       value: 59d51004-04db-4976-8235-92bf0a425368
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
+      propertyPath: Interact.m_Name
+      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
       propertyPath: BotSwitch.m_Name
@@ -6572,8 +6593,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
+      propertyPath: Interact.m_Id
+      value: 1754f634-9e60-40eb-9452-34e91875b91e
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
       propertyPath: BotSwitch.m_Id
       value: 4fab00a5-7432-47c4-94a5-5eb8291ee9c3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
+      propertyPath: Interact.m_Name
+      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 5673696641834809872, guid: 4a2c68e219902524d832272373434e04, type: 3}
       propertyPath: BotSwitch.m_Name
