@@ -60,10 +60,14 @@ public class DroneMove : MonoBehaviour
            
         }
 
-        
-          
+        // Prevents the drone form moving when it's turned off
+        if (!On)
+        {
+            drone.destination = this.transform.position;
+        }
+       
 
-         
+    
     }
 
     void DroneRushPlayer()

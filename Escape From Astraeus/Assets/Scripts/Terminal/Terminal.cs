@@ -13,6 +13,7 @@ public class Terminal : MonoBehaviour
     public GameObject playerController;
     private PlayerController playerControllerScript;
     private bool playerOnTerminal;
+    
     void Start()    
     {
         playerControllerScript = playerController.GetComponent<PlayerController>();
@@ -55,7 +56,28 @@ public class Terminal : MonoBehaviour
 
     void ShutDownDrone()
     {
+       StartCoroutine(DroneShutDown());
+    }
+
+    IEnumerator DroneShutDown()
+    {
+        yield return new WaitForSeconds(5f);
         droneMove.On = false;
         droneSight.enabled = false;
+
+        Debug.Log("Turning Drone Off");
+        StartCoroutine(TurnDroneOn());
+        //StopAllCoroutines();
+    }
+
+    IEnumerator TurnDroneOn()
+    {
+        yield return new WaitForSeconds(8f);
+        Debug.Log("Turning Drone On");
+        droneMove.On = true;
+        droneSight.enabled = true;
+
+        
+         StopAllCoroutines();
     }
 }
