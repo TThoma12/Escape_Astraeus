@@ -12,20 +12,26 @@ public class Terminal : MonoBehaviour
     private DroneSight droneSight;
     public GameObject playerController;
     private PlayerController playerControllerScript;
-    private bool playerOnTerminal;
+    private bool playerOnTerminal, terminalOn;
+    public GameObject terminalTextOBJ;
+    public TMPro.TextMeshProUGUI terminalText;
     
     void Start()    
     {
         playerControllerScript = playerController.GetComponent<PlayerController>();
         droneMove = drone.GetComponent<DroneMove>();
         droneSight = drone.GetComponent<DroneSight>();
+       
+       
         terminalUi.SetActive(false);
+        terminalOn = true;
+        terminalText.color = new Color(0.2705883f,1,4365277,1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.Interact.triggered)
+        if (playerControllerScript.Interact.triggered && terminalOn)
         {
             Debug.Log("E");
             if (playerOnTerminal)
@@ -33,6 +39,14 @@ public class Terminal : MonoBehaviour
                 ShutDownDrone();
             }
             
+        }
+
+        if (!terminalOn)
+        {
+            terminalText.text = "Access Denied";
+            terminalText.color = new Color(1,0.2688679f,0.2688679f,1);
+
+           
         }
     }
 
@@ -61,21 +75,25 @@ public class Terminal : MonoBehaviour
 
     IEnumerator DroneShutDown()
     {
+        terminalText.text = "Hacking Drone...";
+        terminalText.color = new Color(0.2705883f,1,0.4365277f,1);
         yield return new WaitForSeconds(5f);
+        
         droneMove.On = false;
         droneSight.enabled = false;
 
-        Debug.Log("Turning Drone Off");
+       
         StartCoroutine(TurnDroneOn());
         //StopAllCoroutines();
     }
 
     IEnumerator TurnDroneOn()
     {
+        terminalText.text = "Drone Rebooting...";
         yield return new WaitForSeconds(8f);
-        Debug.Log("Turning Drone On");
         droneMove.On = true;
         droneSight.enabled = true;
+        terminalOn = false;
 
         
          StopAllCoroutines();
