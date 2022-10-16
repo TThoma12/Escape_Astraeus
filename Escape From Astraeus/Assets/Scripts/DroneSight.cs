@@ -8,35 +8,36 @@ public class DroneSight : MonoBehaviour
     public float radius;
     [Range(0,360)]
     public float angle;
-
     public GameObject playerRef;
-    public GameObject[] playerBots;
-
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
-    private PlayerController playerController;
+     public GameObject playerController;
+    private PlayerController playerControllerScript;
+    public GameObject[] playerBots;
     
     
     void Start()
     {
         //playerRef = GameObject.FindGameObjectWithTag("Player");
-        playerController = FindObjectOfType<PlayerController>();
+        playerControllerScript = playerController.GetComponent<PlayerController>();
         StartCoroutine(FOVRoutine());
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        if(playerController.Bot1Active)
-        {
-            playerRef = playerBots[0];
-        }
-        if(playerController.Bot2Active)
-        {
-            playerRef = playerBots[1];
-        }
+        if (playerControllerScript.Bot1Active == true)
+            {
+               playerRef = playerBots[0];
+            }
+            
+            if (playerControllerScript.Bot2Active == true)
+            {
+                playerRef = playerBots[1];
+            }
     }
 
     private IEnumerator FOVRoutine()

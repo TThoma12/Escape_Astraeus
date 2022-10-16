@@ -80,6 +80,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""62d3bfba-f118-49b3-866e-4522a1f87aaf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchBot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""733903cb-9e15-4e87-8732-f3c541099708"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -926,6 +946,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_FlyUp = m_Player.FindAction("FlyUp", throwIfNotFound: true);
         m_Player_FlyDown = m_Player.FindAction("FlyDown", throwIfNotFound: true);
         m_Player_SwitchBot = m_Player.FindAction("SwitchBot", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1003,6 +1024,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_FlyUp;
     private readonly InputAction m_Player_FlyDown;
     private readonly InputAction m_Player_SwitchBot;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -1013,6 +1035,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @FlyUp => m_Wrapper.m_Player_FlyUp;
         public InputAction @FlyDown => m_Wrapper.m_Player_FlyDown;
         public InputAction @SwitchBot => m_Wrapper.m_Player_SwitchBot;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1040,6 +1063,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @SwitchBot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBot;
                 @SwitchBot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBot;
                 @SwitchBot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBot;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1062,6 +1088,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @SwitchBot.started += instance.OnSwitchBot;
                 @SwitchBot.performed += instance.OnSwitchBot;
                 @SwitchBot.canceled += instance.OnSwitchBot;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1224,6 +1253,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnFlyUp(InputAction.CallbackContext context);
         void OnFlyDown(InputAction.CallbackContext context);
         void OnSwitchBot(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

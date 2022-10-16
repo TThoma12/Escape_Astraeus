@@ -17,8 +17,12 @@ public class DroneMove : MonoBehaviour
     public bool On, playerInView;
     private DroneSight droneSight;
     public GameObject player;
+    public GameObject[] playerBots;
+
     public GameObject playerSpawn;
-    private PlayerController playerController;
+    public GameObject playerController;
+    private PlayerController playerControllerScript;
+    public bool oneBot;
 
     
    
@@ -27,7 +31,7 @@ public class DroneMove : MonoBehaviour
     {
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
-        playerController = FindObjectOfType<PlayerController>();
+        playerControllerScript = playerController.GetComponent<PlayerController>();
         
     }
 
@@ -42,14 +46,28 @@ public class DroneMove : MonoBehaviour
 
         if(droneSight.canSeePlayer)
         {
-            drone.destination = player.transform.position;
-            player.transform.position = playerSpawn.transform.position;
+            if (playerControllerScript.Bot1Active == true)
+            {
+                drone.destination = playerBots[0].transform.position;
+                playerBots[0].transform.position = playerSpawn.transform.position;
+            }
+            
+            if (playerControllerScript.Bot2Active == true)
+            {
+                drone.destination = playerBots[1].transform.position;
+                playerBots[1].transform.position = playerSpawn.transform.position;
+            }
+           
         }
 
-        
-          
+        // Prevents the drone form moving when it's turned off
+        if (!On)
+        {
+            drone.destination = this.transform.position;
+        }
+       
 
-         
+    
     }
 
     void DroneRushPlayer()

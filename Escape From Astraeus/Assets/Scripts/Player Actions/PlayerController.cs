@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction flyUp;
     private InputAction BotSwitch;
+    public InputAction Interact;
     public float playeRotspeed = 50.0f;
     public float playerSpeed = 5.0f;
     private PlayerSwitcher playerSwitcher;
@@ -31,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
         BotSwitch = playerControls.Player.SwitchBot;
         BotSwitch.Enable();
+
+        Interact = playerControls.Player.Interact;
+        Interact.Enable();
     }
 
     private void OnDisable() 
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
         move.Disable();
         flyUp.Disable();
         BotSwitch.Disable();
+        Interact.Disable();
     }
    
     // Start is called before the first frame update
@@ -94,11 +99,13 @@ public class PlayerController : MonoBehaviour
 
                 playerSwitcher.SwitchToBot1();
             }
-
-            
-
-            Debug.Log("Switch");
+  
         }
+
+        // if(Interact.triggered)
+        // {
+        //     Debug.Log("EE");
+        // }
     }
 
     

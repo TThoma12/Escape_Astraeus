@@ -32,6 +32,32 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: GameView
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 870
+    y: 0
+    width: 644
+    height: 663
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 16}
+  m_Panes:
+  - {fileID: 16}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &3
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -742,7 +768,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: -28.138193, y: 4.6528845, z: -16.722975}
     speed: 2
-    m_Value: {x: -28.138193, y: 4.6528845, z: -16.722975}
+    m_Value: {x: -28.138193, y: 4.6528845, z: -16.722975
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -800,7 +826,7 @@ MonoBehaviour:
     m_Target: 0
     speed: 2
     m_Value: 0
-  m_CameraSettings:
+  m_CameraSettings
     m_Speed: 0.7006499
     m_SpeedNormalized: 0.34999996
     m_SpeedMin: 0.001
