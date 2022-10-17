@@ -46,17 +46,17 @@ public class DroneMove : MonoBehaviour
 
         if(droneSight.canSeePlayer)
         {
-            if (playerControllerScript.Bot1Active == true)
-            {
-                drone.destination = playerBots[0].transform.position;
-                playerBots[0].transform.position = playerSpawn.transform.position;
-            }
+            // if (playerControllerScript.Bot1Active == true)
+            // {
+            //     drone.destination = playerBots[0].transform.position;
+            //     playerBots[0].transform.position = playerSpawn.transform.position;
+            // }
             
-            if (playerControllerScript.Bot2Active == true)
-            {
-                drone.destination = playerBots[1].transform.position;
-                playerBots[1].transform.position = playerSpawn.transform.position;
-            }
+            // if (playerControllerScript.Bot2Active == true)
+            // {
+            //     drone.destination = playerBots[1].transform.position;
+            //     playerBots[1].transform.position = playerSpawn.transform.position;
+            // }
            
         }
 
@@ -72,7 +72,7 @@ public class DroneMove : MonoBehaviour
 
     void DroneRushPlayer()
     {
-
+            
     }
 
     void DronePatrol()

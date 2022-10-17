@@ -29,15 +29,16 @@ public class DroneSight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.Bot1Active == true)
-            {
-               playerRef = playerBots[0];
-            }
+        //Switches player refrence depending on which bot is the player controlling
+        // if (playerControllerScript.Bot1Active == true)
+        //     {
+        //        playerRef = playerBots[0];
+        //     }
             
-            if (playerControllerScript.Bot2Active == true)
-            {
-                playerRef = playerBots[1];
-            }
+        //     if (playerControllerScript.Bot2Active == true)
+        //     {
+        //         playerRef = playerBots[1];
+        //     }
     }
 
     private IEnumerator FOVRoutine()

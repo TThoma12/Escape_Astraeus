@@ -14,8 +14,9 @@ public class PlayerController : MonoBehaviour
     public float playeRotspeed = 50.0f;
     public float playerSpeed = 5.0f;
     private PlayerSwitcher playerSwitcher;
-    public bool Bot1Active, Bot2Active;
-    public GameObject Bot1, Bot2;
+    public bool[] botsActivated;
+    public GameObject[] bots;
+    private int x;
 
     private void Awake() 
     {
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //botsActivated[1] = true;
     }
 
     // Update is called once per frame
@@ -63,44 +64,69 @@ public class PlayerController : MonoBehaviour
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
 
-        //Sets Robot 1 controls
-        if (Bot1Active)
+        // //Sets Robot 1 controls
+        // if (Bot1Active)
+        // {
+        //     Bot1.transform.Translate(0,0,forward);
+        //     Bot1.transform.Rotate(0,rotate,0);
+        // }
+
+        // //Sets Robots 2 controls
+        // if (Bot2Active)
+        // {
+        //     Bot2.transform.Translate(0,0,forward);
+        //     Bot2.transform.Rotate(0,rotate,0);
+        // }
+        for(x = 0; x < botsActivated.Length; x++)
         {
-            Bot1.transform.Translate(0,0,forward);
-            Bot1.transform.Rotate(0,rotate,0);
+             if (botsActivated[x])
+       {
+            switch (x)
+            {
+                case 0:
+                    bots[0].transform.Translate(0,0,forward);
+                    bots[0].transform.Rotate(0,rotate,0);
+                   // Debug.Log("0");
+                break;
+
+                case 1:
+                    bots[1].transform.Translate(0,0,forward);
+                    bots[1].transform.Rotate(0,rotate,0);
+                    //Debug.Log("1");
+                break;
+                
+            }
+           
+       }
         }
 
-        //Sets Robots 2 controls
-        if (Bot2Active)
-        {
-            Bot2.transform.Translate(0,0,forward);
-            Bot2.transform.Rotate(0,rotate,0);
-        }
-
+        x = 0;
+      
+        
 
     }
 
     void Update() 
     {
         // If tab is pressed switches between two robots.
-        if(BotSwitch.triggered)
-        {
-            if(Bot1Active)
-            {
-                Bot2Active = true;
-                Bot1Active = false;
+        // if(BotSwitch.triggered)
+        // {
+        //     if(Bot1Active)
+        //     {
+        //         Bot2Active = true;
+        //         Bot1Active = false;
 
-                playerSwitcher.SwitchToBot2();
-            }
-            else
-            {
-                Bot2Active = false;
-                Bot1Active = true;
+        //         playerSwitcher.SwitchToBot2();
+        //     }
+        //     else
+        //     {
+        //         Bot2Active = false;
+        //         Bot1Active = true;
 
-                playerSwitcher.SwitchToBot1();
-            }
+        //         playerSwitcher.SwitchToBot1();
+        //     }
   
-        }
+        // }
 
         // if(Interact.triggered)
         // {
