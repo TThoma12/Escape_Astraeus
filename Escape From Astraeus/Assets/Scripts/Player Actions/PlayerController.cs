@@ -64,40 +64,38 @@ public class PlayerController : MonoBehaviour
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
 
-        // //Sets Robot 1 controls
-        // if (Bot1Active)
-        // {
-        //     Bot1.transform.Translate(0,0,forward);
-        //     Bot1.transform.Rotate(0,rotate,0);
-        // }
 
-        // //Sets Robots 2 controls
-        // if (Bot2Active)
-        // {
-        //     Bot2.transform.Translate(0,0,forward);
-        //     Bot2.transform.Rotate(0,rotate,0);
-        // }
         for(x = 0; x < botsActivated.Length; x++)
         {
              if (botsActivated[x])
-       {
+        {
             switch (x)
             {
                 case 0:
                     bots[0].transform.Translate(0,0,forward);
                     bots[0].transform.Rotate(0,rotate,0);
-                   // Debug.Log("0");
+                
                 break;
 
                 case 1:
                     bots[1].transform.Translate(0,0,forward);
                     bots[1].transform.Rotate(0,rotate,0);
-                    //Debug.Log("1");
+       
+                break;
+                 case 2:
+                    bots[2].transform.Translate(0,0,forward);
+                    bots[2].transform.Rotate(0,rotate,0);
+       
+                break;
+                 case 3:
+                    bots[3].transform.Translate(0,0,forward);
+                    bots[3].transform.Rotate(0,rotate,0);
+       
                 break;
                 
             }
            
-       }
+        }
         }
 
         x = 0;
