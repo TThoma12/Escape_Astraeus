@@ -39,6 +39,8 @@ public class DroneSight : MonoBehaviour
         //     {
         //         playerRef = playerBots[1];
         //     }
+
+        playerRef = playerControllerScript.bots[playerControllerScript.currentBot];
     }
 
     private IEnumerator FOVRoutine()

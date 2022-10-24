@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     public float playeRotspeed = 50.0f;
     public float playerSpeed = 5.0f;
     private PlayerSwitcher playerSwitcher;
+    private DroneMove droneMoveScript;
+    private DroneSight droneSightScript;
     public bool[] botsActivated;
     public GameObject[] bots;
-    private int x;
+    public int  currentBot;
 
     private void Awake() 
     {
@@ -65,11 +67,11 @@ public class PlayerController : MonoBehaviour
         rotate *= Time.deltaTime;
 
 
-        for(x = 0; x < botsActivated.Length; x++)
+        for(currentBot = 0; currentBot < botsActivated.Length; currentBot++)
         {
-             if (botsActivated[x])
+             if (botsActivated[currentBot])
         {
-            switch (x)
+            switch (currentBot)
             {
                 case 0:
                     bots[0].transform.Translate(0,0,forward);
@@ -85,6 +87,11 @@ public class PlayerController : MonoBehaviour
                  case 2:
                     bots[2].transform.Translate(0,0,forward);
                     bots[2].transform.Rotate(0,rotate,0);
+                    droneMoveScript = bots[2].GetComponent<DroneMove>();
+                    droneSightScript = bots[2].GetComponent<DroneSight>();
+
+                    droneSightScript.enabled = false;
+                    droneMoveScript.On = false;
        
                 break;
                  case 3:
@@ -98,7 +105,7 @@ public class PlayerController : MonoBehaviour
         }
         }
 
-        x = 0;
+        currentBot = 0;
       
         
 
