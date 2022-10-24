@@ -53,6 +53,42 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlyUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""eae8b415-ee54-48c7-a90a-2f42ffca445a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlyDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b4e1fd8-53f1-4d33-bf7f-2fa0455c89e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchBot"",
+                    ""type"": ""Button"",
+                    ""id"": ""a34445af-2a06-45f2-9f72-a2ae648cedb8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""62d3bfba-f118-49b3-866e-4522a1f87aaf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -273,6 +309,50 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70e1b092-41a9-466f-a4c3-2efb60801f1e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""FlyUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e249395-34fe-4c96-9e3a-39099a86b52d"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""FlyDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""899975ad-1c48-48a8-a0b7-a29306958a02"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchBot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""733903cb-9e15-4e87-8732-f3c541099708"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -863,6 +943,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_FlyUp = m_Player.FindAction("FlyUp", throwIfNotFound: true);
+        m_Player_FlyDown = m_Player.FindAction("FlyDown", throwIfNotFound: true);
+        m_Player_SwitchBot = m_Player.FindAction("SwitchBot", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -937,6 +1021,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_FlyUp;
+    private readonly InputAction m_Player_FlyDown;
+    private readonly InputAction m_Player_SwitchBot;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -944,6 +1032,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @FlyUp => m_Wrapper.m_Player_FlyUp;
+        public InputAction @FlyDown => m_Wrapper.m_Player_FlyDown;
+        public InputAction @SwitchBot => m_Wrapper.m_Player_SwitchBot;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -962,6 +1054,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @FlyUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlyUp;
+                @FlyUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlyUp;
+                @FlyUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlyUp;
+                @FlyDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlyDown;
+                @FlyDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlyDown;
+                @FlyDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlyDown;
+                @SwitchBot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBot;
+                @SwitchBot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBot;
+                @SwitchBot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBot;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -975,6 +1079,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @FlyUp.started += instance.OnFlyUp;
+                @FlyUp.performed += instance.OnFlyUp;
+                @FlyUp.canceled += instance.OnFlyUp;
+                @FlyDown.started += instance.OnFlyDown;
+                @FlyDown.performed += instance.OnFlyDown;
+                @FlyDown.canceled += instance.OnFlyDown;
+                @SwitchBot.started += instance.OnSwitchBot;
+                @SwitchBot.performed += instance.OnSwitchBot;
+                @SwitchBot.canceled += instance.OnSwitchBot;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1134,6 +1250,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnFlyUp(InputAction.CallbackContext context);
+        void OnFlyDown(InputAction.CallbackContext context);
+        void OnSwitchBot(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

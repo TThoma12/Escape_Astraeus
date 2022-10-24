@@ -4,25 +4,89 @@ using UnityEngine;
 
 public class DroneSight : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Code from https://www.youtube.com/watch?v=j1-OyLo77ss
+    public float radius;
+    [Range(0,360)]
+    public float angle;
+    public GameObject playerRef;
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
+    public bool canSeePlayer;
+     public GameObject playerController;
+    private PlayerController playerControllerScript;
+    public GameObject[] playerBots;
+    
+    
     void Start()
     {
+        //playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerControllerScript = playerController.GetComponent<PlayerController>();
+        StartCoroutine(FOVRoutine());
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerControllerScript.Bot1Active == true)
+            {
+               playerRef = playerBots[0];
+            }
+            
+            if (playerControllerScript.Bot2Active == true)
+            {
+                playerRef = playerBots[1];
+            }
     }
 
-     void OnCollisionEnter(Collision col) 
+    private IEnumerator FOVRoutine()
     {
-         if (col.gameObject.CompareTag("Player"))
+        float delay = 0.2f;
+        WaitForSeconds wait = new WaitForSeconds(delay);
+
+        while(true)
         {
-            Debug.Log("Player Spotted");
+            yield return wait;
+            FieldOfViewCheck();
         }
     }
+
+    private void FieldOfViewCheck()
+    {
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+
+        if(rangeChecks.Length !=0)
+        {
+            Transform target = rangeChecks[0].transform;
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+            if(Vector3.Angle(transform.forward, directionToTarget) < angle /2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    canSeePlayer = true;
+                }
+                else
+                {
+                    canSeePlayer = false;
+                }
+            }
+            else
+            {
+                canSeePlayer = false;
+            }
+        }
+
+        else if(canSeePlayer)
+        {
+            canSeePlayer = false;
+        }
+    }
+
+    
 
     
 }

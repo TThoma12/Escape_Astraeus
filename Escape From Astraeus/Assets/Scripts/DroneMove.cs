@@ -14,20 +14,70 @@ public class DroneMove : MonoBehaviour
     public float visDistance;
     public int randomPP;
     public Vector3 visionBox;
+    public bool On, playerInView;
+    private DroneSight droneSight;
+    public GameObject player;
+    public GameObject[] playerBots;
+
+    public GameObject playerSpawn;
+    public GameObject playerController;
+    private PlayerController playerControllerScript;
+    public bool oneBot;
+
     
    
     // Start is called before the first frame update
     void Start()
     {
         drone = GetComponent<NavMeshAgent>();
+        droneSight = GetComponent<DroneSight>();
+        playerControllerScript = playerController.GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
          
+        if (On && !droneSight.canSeePlayer)
+        {
+           DronePatrol();
+        }
 
-          drone.destination = patrolPoints[currentPP].transform.position;
+        if(droneSight.canSeePlayer)
+        {
+            if (playerControllerScript.Bot1Active == true)
+            {
+                drone.destination = playerBots[0].transform.position;
+                playerBots[0].transform.position = playerSpawn.transform.position;
+            }
+            
+            if (playerControllerScript.Bot2Active == true)
+            {
+                drone.destination = playerBots[1].transform.position;
+                playerBots[1].transform.position = playerSpawn.transform.position;
+            }
+           
+        }
+
+        // Prevents the drone form moving when it's turned off
+        if (!On)
+        {
+            drone.destination = this.transform.position;
+        }
+       
+
+    
+    }
+
+    void DroneRushPlayer()
+    {
+
+    }
+
+    void DronePatrol()
+    {
+         drone.destination = patrolPoints[currentPP].transform.position;
 
           if (Vector3.Distance(transform.position, patrolPoints[currentPP].transform.position) < 2)
           {
@@ -36,8 +86,6 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
-
-         
     }
     
    void OnDrawGizmos() 
