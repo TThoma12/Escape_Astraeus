@@ -22,7 +22,7 @@ public class DroneMove : MonoBehaviour
     public GameObject playerSpawn;
     public GameObject playerController;
     private PlayerController playerControllerScript;
-    public bool oneBot;
+    public bool oneBot, playerInControl;
 
     
    
@@ -32,6 +32,7 @@ public class DroneMove : MonoBehaviour
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        playerInControl = false;
         
     }
 
@@ -65,9 +66,32 @@ public class DroneMove : MonoBehaviour
         {
             drone.destination = this.transform.position;
         }
+
+        if (playerInControl)
+        {
+            ShutdownDrone();
+        }
+        else
+        {
+            turnOnDrone();
+
+        }
        
 
     
+    }
+
+    void ShutdownDrone()
+    {
+        On = false;
+        droneSight.enabled = false;
+    }
+
+    void turnOnDrone()
+    {
+        On = true;
+        droneSight.enabled = true;
+        playerInControl = false;
     }
 
     void DroneRushPlayer()

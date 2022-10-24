@@ -88,10 +88,15 @@ public class PlayerController : MonoBehaviour
                     bots[2].transform.Translate(0,0,forward);
                     bots[2].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[2].GetComponent<DroneMove>();
-                    droneSightScript = bots[2].GetComponent<DroneSight>();
+                    // if (botsActivated[2] == true)
+                    // {
+                    //     droneMoveScript.playerInControl = true;
+                    // }
+                    // else
+                    // {
+                    //     droneMoveScript.playerInControl = false;
+                    // }
 
-                    droneSightScript.enabled = false;
-                    droneMoveScript.On = false;
        
                 break;
                  case 3:
@@ -99,6 +104,7 @@ public class PlayerController : MonoBehaviour
                     bots[3].transform.Rotate(0,rotate,0);
        
                 break;
+            
                 
             }
            
