@@ -15,6 +15,7 @@ public class DroneSight : MonoBehaviour
      public GameObject playerController;
     private PlayerController playerControllerScript;
     public GameObject[] playerBots;
+    private Vector3 distanceFromPlayer;
     
     
     void Start()
@@ -41,6 +42,7 @@ public class DroneSight : MonoBehaviour
         //     }
 
         playerRef = playerControllerScript.bots[playerControllerScript.currentBot];
+        
     }
 
     private IEnumerator FOVRoutine()
