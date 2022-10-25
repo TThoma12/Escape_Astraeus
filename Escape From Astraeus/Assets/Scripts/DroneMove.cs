@@ -18,11 +18,11 @@ public class DroneMove : MonoBehaviour
     private DroneSight droneSight;
     public GameObject player;
     public GameObject[] playerBots;
-
     public GameObject playerSpawn;
     public GameObject playerController;
     private PlayerController playerControllerScript;
     public bool oneBot, playerInControl;
+    public Camera droneCam;
 
     
    
@@ -45,20 +45,10 @@ public class DroneMove : MonoBehaviour
            DronePatrol();
         }
 
+        //If the robot can see the player
         if(droneSight.canSeePlayer)
         {
-            // if (playerControllerScript.Bot1Active == true)
-            // {
-            //     drone.destination = playerBots[0].transform.position;
-            //     playerBots[0].transform.position = playerSpawn.transform.position;
-            // }
-            
-            // if (playerControllerScript.Bot2Active == true)
-            // {
-            //     drone.destination = playerBots[1].transform.position;
-            //     playerBots[1].transform.position = playerSpawn.transform.position;
-            // }
-           
+          
         }
 
         // Prevents the drone form moving when it's turned off
@@ -70,11 +60,12 @@ public class DroneMove : MonoBehaviour
         if (playerControllerScript.prevBot == botID)
         {
             ShutdownDrone();
+            droneCam.enabled = true;
         }
         else
         {
             turnOnDrone();
-
+            droneCam.enabled = false;
         }
        
 

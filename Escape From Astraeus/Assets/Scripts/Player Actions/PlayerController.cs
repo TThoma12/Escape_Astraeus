@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool[] botsActivated;
     public GameObject[] bots;
     public int  currentBot, prevBot;
+   
 
     private void Awake() 
     {
@@ -78,12 +79,17 @@ public class PlayerController : MonoBehaviour
                     bots[0].transform.Translate(0,0,forward);
                     bots[0].transform.Rotate(0,rotate,0);
                     prevBot = 0;
+                    
+                    
                 
                 break;
 
                 case 1:
                     bots[1].transform.Translate(0,0,forward);
                     bots[1].transform.Rotate(0,rotate,0);
+                    droneMoveScript = bots[1].GetComponent<DroneMove>();
+                    droneMoveScript.playerInControl = true;
+                    droneMoveScript.botID = 1;
                     prevBot = 1;
        
                 break;
@@ -94,10 +100,8 @@ public class PlayerController : MonoBehaviour
                     droneMoveScript.playerInControl = true;
                     droneMoveScript.botID = 2;
                     prevBot = 2;
-                    
-                   
+            
 
-       
                 break;
                  case 3:
                     bots[3].transform.Translate(0,0,forward);
@@ -154,6 +158,9 @@ public class PlayerController : MonoBehaviour
         // {
         //     Debug.Log("EE");
         // }
+
+        
+        
     }
 
     
