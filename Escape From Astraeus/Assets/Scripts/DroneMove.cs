@@ -12,7 +12,7 @@ public class DroneMove : MonoBehaviour
     public float rSpeed = 10.0f;
     private NavMeshAgent drone;
     public float visDistance;
-    public int randomPP;
+    public int randomPP, botID;
     public Vector3 visionBox;
     public bool On, playerInView;
     private DroneSight droneSight;
@@ -67,7 +67,7 @@ public class DroneMove : MonoBehaviour
             drone.destination = this.transform.position;
         }
 
-        if (playerInControl)
+        if (playerControllerScript.prevBot == botID)
         {
             ShutdownDrone();
         }

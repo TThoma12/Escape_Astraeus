@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private DroneSight droneSightScript;
     public bool[] botsActivated;
     public GameObject[] bots;
-    public int  currentBot;
+    public int  currentBot, prevBot;
 
     private void Awake() 
     {
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //botsActivated[1] = true;
+        
     }
 
     // Update is called once per frame
@@ -76,39 +77,49 @@ public class PlayerController : MonoBehaviour
                 case 0:
                     bots[0].transform.Translate(0,0,forward);
                     bots[0].transform.Rotate(0,rotate,0);
+                    prevBot = 0;
                 
                 break;
 
                 case 1:
                     bots[1].transform.Translate(0,0,forward);
                     bots[1].transform.Rotate(0,rotate,0);
+                    prevBot = 1;
        
                 break;
                  case 2:
                     bots[2].transform.Translate(0,0,forward);
                     bots[2].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[2].GetComponent<DroneMove>();
-                    // if (botsActivated[2] == true)
-                    // {
-                    //     droneMoveScript.playerInControl = true;
-                    // }
-                    // else
-                    // {
-                    //     droneMoveScript.playerInControl = false;
-                    // }
+                    droneMoveScript.playerInControl = true;
+                    droneMoveScript.botID = 2;
+                    prevBot = 2;
+                    
+                   
 
        
                 break;
                  case 3:
                     bots[3].transform.Translate(0,0,forward);
                     bots[3].transform.Rotate(0,rotate,0);
+                    droneMoveScript = bots[3].GetComponent<DroneMove>();
+                    droneMoveScript.playerInControl = true;
+                    droneMoveScript.botID = 3;
+                    prevBot = 3;
        
+                break;
+                default:
+                    droneMoveScript = bots[prevBot].GetComponent<DroneMove>();
+                    droneMoveScript.playerInControl = false;
+                    Debug.Log("Default");
                 break;
             
                 
             }
            
         }
+
+            
         }
 
         currentBot = 0;

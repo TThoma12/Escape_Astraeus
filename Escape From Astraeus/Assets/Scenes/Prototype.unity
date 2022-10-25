@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 97505683}
   - {fileID: 862925456}
   - {fileID: 1394839050}
+  currentBot: 0
 --- !u!4 &37835155
 Transform:
   m_ObjectHideFlags: 0
@@ -621,7 +622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &301039389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +676,7 @@ MonoBehaviour:
   playerSpawn: {fileID: 2035300038}
   playerController: {fileID: 37835153}
   oneBot: 0
+  playerInControl: 0
 --- !u!195 &301039391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2140,10 +2142,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 37835153}
     - target: {fileID: 6647585084438565707, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
-      propertyPath: patrolPoints.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647585084438565707, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
       propertyPath: playerBots.Array.data[0]
       value: 
       objectReference: {fileID: 862925456}
@@ -2198,36 +2196,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6647585084438565750, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
   m_PrefabInstance: {fileID: 1339163492}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1394839058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394839050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 9c1ea1eaa56670c40b49c9d2f3817f01, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!43 &1407529755
 Mesh:
   m_ObjectHideFlags: 0
