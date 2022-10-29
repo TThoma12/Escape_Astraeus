@@ -63,12 +63,14 @@ public class DroneMove : MonoBehaviour
             ShutdownDrone();
             droneCam.enabled = true;
             tag = "Player";
+            gameObject.layer = 6;
         }
         else
         {
             turnOnDrone();
             droneCam.enabled = false;
             tag = "Drone";
+             gameObject.layer = 0;
         }
        
 

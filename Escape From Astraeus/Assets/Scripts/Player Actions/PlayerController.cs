@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //botsActivated[1] = true;
+        botsActivated[0] = true;
         
     }
 
@@ -78,6 +78,9 @@ public class PlayerController : MonoBehaviour
                 case 0:
                     bots[0].transform.Translate(0,0,forward);
                     bots[0].transform.Rotate(0,rotate,0);
+                    droneMoveScript = bots[0].GetComponent<DroneMove>();
+                    droneMoveScript.playerInControl = true;
+                    droneMoveScript.botID = 0;
                     prevBot = 0;
                     
                     
