@@ -16,19 +16,18 @@ public class BehindCollider : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter(Collision collider) 
+     void OnTriggerEnter(Collider collider) 
     {
-        if (collider.gameObject.tag == "Player")
+         if (collider.gameObject.tag == "Player")
         {
             playerIsBehind = true;
             Debug.Log("Player Is Behind");
         }
-        
     }
 
-    void OnCollisionExit(Collision collider) 
+     void OnTriggerExit(Collider collider) 
     {
-        if (collider.gameObject.tag == "Player")
+         if (collider.gameObject.tag == "Player")
         {
             playerIsBehind = false;
         }
