@@ -57,15 +57,18 @@ public class DroneMove : MonoBehaviour
             drone.destination = this.transform.position;
         }
 
+        //Checks if the player is currenty on controlling the robot
         if (playerControllerScript.prevBot == botID)
         {
             ShutdownDrone();
             droneCam.enabled = true;
+            tag = "Player";
         }
         else
         {
             turnOnDrone();
             droneCam.enabled = false;
+            tag = "Drone";
         }
        
 

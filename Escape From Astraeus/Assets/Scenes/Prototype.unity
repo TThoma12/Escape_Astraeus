@@ -637,7 +637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &301039389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +699,7 @@ MonoBehaviour:
   playerController: {fileID: 37835153}
   oneBot: 0
   playerInControl: 0
+  droneCam: {fileID: 0}
 --- !u!195 &301039391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -903,6 +904,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6647585084438565750, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
   m_PrefabInstance: {fileID: 1670643820}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &507938315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507938306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d71ed25af5cea4c9011f4e6747a38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIsBehind: 0
 --- !u!1 &558313045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2796,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6647585084438565706, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647585084438565707, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
+      propertyPath: On
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6647585084438565707, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
