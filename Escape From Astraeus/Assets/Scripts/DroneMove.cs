@@ -20,7 +20,9 @@ public class DroneMove : MonoBehaviour
     public GameObject[] playerBots;
     public GameObject playerSpawn;
     public GameObject playerController;
+    public GameObject behindCollider;
     private PlayerController playerControllerScript;
+    private BehindCollider behindColliderScript;
     public bool oneBot, playerInControl;
     public Camera droneCam;
 
@@ -32,6 +34,7 @@ public class DroneMove : MonoBehaviour
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        behindColliderScript = behindCollider.GetComponent<BehindCollider>();
         playerInControl = false;
         
     }
@@ -72,6 +75,23 @@ public class DroneMove : MonoBehaviour
             tag = "Drone";
              gameObject.layer = 0;
         }
+
+        if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
+        {
+            bool botsOff = false;
+            
+            //StartCoroutine(playerControllerScript.TurnOffAllBots());
+            playerControllerScript.SetOtherBotsOff();
+            botsOff = true;
+
+            if (botsOff)
+            {
+                playerControllerScript.botsActivated[botID] = true;
+                botsOff = false;
+            }
+           
+        }
+          
        
 
     

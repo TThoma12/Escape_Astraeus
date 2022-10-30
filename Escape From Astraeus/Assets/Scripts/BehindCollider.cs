@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BehindCollider : MonoBehaviour
 {
-    public bool playerIsBehind;
+    public bool playerIsBehind, hackable;
+    public GameObject takeOverText;
+    private PlayerController playerControllerScript;
+    public GameObject playerController;
     // Start is called before the first frame update
     void Start()
     {
+        playerControllerScript = playerController.GetComponent<PlayerController>();
+        takeOverText.SetActive(false);
         
     }
 
@@ -22,6 +28,12 @@ public class BehindCollider : MonoBehaviour
         {
             playerIsBehind = true;
             Debug.Log("Player Is Behind");
+            StartCoroutine(DroneTakeOver());
+        }
+
+        if(playerIsBehind == true && hackable == true)
+        {
+             takeOverText.SetActive(true);
         }
     }
 
@@ -30,7 +42,16 @@ public class BehindCollider : MonoBehaviour
          if (collider.gameObject.tag == "Player")
         {
             playerIsBehind = false;
+            takeOverText.SetActive(false);
+            StopAllCoroutines();
         }
+    }
+
+    IEnumerator DroneTakeOver()
+    {
+        yield return new WaitForSeconds(2f);
+        hackable = true;
+       
     }
 
     
