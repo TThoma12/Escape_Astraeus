@@ -11,13 +11,10 @@ public class DroneMove : MonoBehaviour
     public float speed;
     public float rSpeed = 10.0f;
     private NavMeshAgent drone;
-    public float visDistance;
     public int randomPP, botID;
-    public Vector3 visionBox;
     public bool On, playerInView;
     private DroneSight droneSight;
     public GameObject player;
-    public GameObject[] playerBots;
     public GameObject playerSpawn;
     public GameObject playerController;
     public GameObject behindCollider;

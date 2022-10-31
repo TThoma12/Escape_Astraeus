@@ -14,7 +14,7 @@ public class DroneSight : MonoBehaviour
     public bool canSeePlayer;
      public GameObject playerController;
     private PlayerController playerControllerScript;
-    public GameObject[] playerBots;
+    //public GameObject[] playerBots;
     private Vector3 distanceFromPlayer;
     
     
