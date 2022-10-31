@@ -12,17 +12,19 @@ public class DroneMove : MonoBehaviour
     public float rSpeed = 10.0f;
     private NavMeshAgent drone;
     public float visDistance;
-    public int randomPP;
+    public int randomPP, botID;
     public Vector3 visionBox;
     public bool On, playerInView;
     private DroneSight droneSight;
     public GameObject player;
     public GameObject[] playerBots;
-
     public GameObject playerSpawn;
     public GameObject playerController;
+    public GameObject behindCollider;
     private PlayerController playerControllerScript;
-    public bool oneBot;
+    private BehindCollider behindColliderScript;
+    public bool oneBot, playerInControl;
+    public Camera droneCam;
 
     
    
@@ -32,6 +34,8 @@ public class DroneMove : MonoBehaviour
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        behindColliderScript = behindCollider.GetComponent<BehindCollider>();
+        playerInControl = false;
         
     }
 
@@ -44,20 +48,10 @@ public class DroneMove : MonoBehaviour
            DronePatrol();
         }
 
+        //If the robot can see the player
         if(droneSight.canSeePlayer)
         {
-            if (playerControllerScript.Bot1Active == true)
-            {
-                drone.destination = playerBots[0].transform.position;
-                playerBots[0].transform.position = playerSpawn.transform.position;
-            }
-            
-            if (playerControllerScript.Bot2Active == true)
-            {
-                drone.destination = playerBots[1].transform.position;
-                playerBots[1].transform.position = playerSpawn.transform.position;
-            }
-           
+          
         }
 
         // Prevents the drone form moving when it's turned off
@@ -65,14 +59,64 @@ public class DroneMove : MonoBehaviour
         {
             drone.destination = this.transform.position;
         }
+
+        //Checks if the player is currenty on controlling the robot
+        if (playerControllerScript.prevBot == botID)
+        {
+            ShutdownDrone();
+            droneCam.enabled = true;
+            tag = "Player";
+            gameObject.layer = 6;
+        }
+        else
+        {
+            turnOnDrone();
+            droneCam.enabled = false;
+            tag = "Drone";
+             gameObject.layer = 0;
+        }
+
+        //Drone Hacking
+
+        if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
+        {
+            bool botsOff = false;
+             behindColliderScript.hackable = false;
+            //StartCoroutine(playerControllerScript.TurnOffAllBots());
+            playerControllerScript.SetOtherBotsOff();
+            botsOff = true;
+
+            if (botsOff)
+            {
+                playerControllerScript.botsActivated[botID] = true;
+                botsOff = false;
+            }
+
+           
+           
+        }
+          
        
 
     
     }
 
+    void ShutdownDrone()
+    {
+        On = false;
+        droneSight.enabled = false;
+    }
+
+    void turnOnDrone()
+    {
+        On = true;
+        droneSight.enabled = true;
+        playerInControl = false;
+    }
+
     void DroneRushPlayer()
     {
-
+            
     }
 
     void DronePatrol()
