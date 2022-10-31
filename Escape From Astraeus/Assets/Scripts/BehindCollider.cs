@@ -20,7 +20,14 @@ public class BehindCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+         if(playerIsBehind == true && hackable == true)
+        {
+             takeOverText.SetActive(true);
+        }
+         if(!hackable)
+        {
+            takeOverText.SetActive(false);
+        }
     }
      void OnTriggerEnter(Collider collider) 
     {
@@ -31,10 +38,7 @@ public class BehindCollider : MonoBehaviour
             StartCoroutine(DroneTakeOver());
         }
 
-        if(playerIsBehind == true && hackable == true)
-        {
-             takeOverText.SetActive(true);
-        }
+       
     }
 
      void OnTriggerExit(Collider collider) 
@@ -43,6 +47,7 @@ public class BehindCollider : MonoBehaviour
         {
             playerIsBehind = false;
             takeOverText.SetActive(false);
+            hackable = false;
             StopAllCoroutines();
         }
     }

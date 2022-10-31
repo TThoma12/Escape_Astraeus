@@ -76,10 +76,12 @@ public class DroneMove : MonoBehaviour
              gameObject.layer = 0;
         }
 
+        //Drone Hacking
+
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
             bool botsOff = false;
-            
+             behindColliderScript.hackable = false;
             //StartCoroutine(playerControllerScript.TurnOffAllBots());
             playerControllerScript.SetOtherBotsOff();
             botsOff = true;
@@ -89,6 +91,8 @@ public class DroneMove : MonoBehaviour
                 playerControllerScript.botsActivated[botID] = true;
                 botsOff = false;
             }
+
+           
            
         }
           

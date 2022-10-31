@@ -164,7 +164,7 @@ MonoBehaviour:
     m_Flags: 0
   playeRotspeed: 90
   playerSpeed: 15
-  botsActivated: 00000000000000
+  botsActivated: 01000000000000
   bots:
   - {fileID: 1394839050}
   - {fileID: 916162826}
@@ -637,7 +637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &277674743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1036,11 +1036,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &504775057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4829122349348899195, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
-  m_PrefabInstance: {fileID: 1339163492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &558313045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,6 +2173,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 37835153}
+    - target: {fileID: 3772119030176653579, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6647585084438565706, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2445,10 +2444,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6647585084438565707, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
-      propertyPath: behindCollider
-      value: 
-      objectReference: {fileID: 504775057}
     - target: {fileID: 6647585084438565707, guid: 6676abda13666c048bcdcca2a3e6b6e7, type: 3}
       propertyPath: playerController
       value: 

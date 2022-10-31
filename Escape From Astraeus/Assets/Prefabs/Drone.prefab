@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7129706, y: 1, z: 1.3140402}
-  m_Center: {x: -0.030616907, y: 0, z: -1.1205424}
+  m_Size: {x: 1.9315771, y: 1, z: 2.0212994}
+  m_Center: {x: 0.012429089, y: 0, z: -1.7440481}
 --- !u!114 &817599405340711273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +338,7 @@ MonoBehaviour:
   - {fileID: 0}
   playerSpawn: {fileID: 0}
   playerController: {fileID: 0}
+  behindCollider: {fileID: 4829122349348899195}
   oneBot: 0
   playerInControl: 0
   droneCam: {fileID: 4540220053184043302}
