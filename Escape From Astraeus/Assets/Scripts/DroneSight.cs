@@ -72,7 +72,11 @@ public class DroneSight : MonoBehaviour
 
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
-                    canSeePlayer = true;
+                    if (!this.enabled == false)
+                    {
+                        canSeePlayer = true;
+                    }
+                    
                 }
                 else
                 {

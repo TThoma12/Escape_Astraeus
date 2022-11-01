@@ -23,6 +23,7 @@ public class DroneMove : MonoBehaviour
     public bool oneBot, playerInControl;
     public Camera droneCam;
     public GameObject exclamationMark, questionMark;
+    public int layerMaskNum;
 
     
    
@@ -50,12 +51,13 @@ public class DroneMove : MonoBehaviour
         
         if(droneSight.canSeePlayer)
         {
-            exclamationMark.SetActive(true);
-            //questionMark.SetActive(true);
+            //exclamationMark.SetActive(true);
+            questionMark.SetActive(true);
         }
         else
         {
-            exclamationMark.SetActive(false);
+            //exclamationMark.SetActive(false);
+            questionMark.SetActive(false);
         }
 
         // Prevents the drone form moving when it's turned off
@@ -71,7 +73,7 @@ public class DroneMove : MonoBehaviour
             droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
-            droneSight.targetMask = 0;
+            //droneSight.targetMask = 0;
         }
         else
         {
@@ -79,6 +81,7 @@ public class DroneMove : MonoBehaviour
             droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
+            
         }
 
         //Drone Hacking
@@ -86,8 +89,7 @@ public class DroneMove : MonoBehaviour
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
             bool botsOff = false;
-             behindColliderScript.hackable = false;
-            //StartCoroutine(playerControllerScript.TurnOffAllBots());
+            behindColliderScript.hackable = false;
             playerControllerScript.SetOtherBotsOff();
             botsOff = true;
 
