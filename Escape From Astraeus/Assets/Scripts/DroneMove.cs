@@ -22,6 +22,7 @@ public class DroneMove : MonoBehaviour
     private BehindCollider behindColliderScript;
     public bool oneBot, playerInControl;
     public Camera droneCam;
+    public GameObject exclamationMark, questionMark;
 
     
    
@@ -46,9 +47,15 @@ public class DroneMove : MonoBehaviour
         }
 
         //If the robot can see the player
+        
         if(droneSight.canSeePlayer)
         {
-          
+            exclamationMark.SetActive(true);
+            //questionMark.SetActive(true);
+        }
+        else
+        {
+            exclamationMark.SetActive(false);
         }
 
         // Prevents the drone form moving when it's turned off
@@ -64,6 +71,7 @@ public class DroneMove : MonoBehaviour
             droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
+            droneSight.targetMask = 0;
         }
         else
         {
@@ -114,6 +122,11 @@ public class DroneMove : MonoBehaviour
     void DroneRushPlayer()
     {
             
+    }
+
+    void LookTowardsPlayer()
+    {
+
     }
 
     void DronePatrol()
