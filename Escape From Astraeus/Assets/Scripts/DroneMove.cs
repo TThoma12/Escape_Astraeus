@@ -11,7 +11,7 @@ public class DroneMove : MonoBehaviour
     public float speed;
     public float rSpeed = 10.0f;
     private NavMeshAgent drone;
-    public int randomPP, botID;
+    public int randomPP, botID, playerSpottedCounter;
     public bool On, playerInView;
     private DroneSight droneSight;
     public GameObject player;
@@ -20,8 +20,10 @@ public class DroneMove : MonoBehaviour
     public GameObject behindCollider;
     private PlayerController playerControllerScript;
     private BehindCollider behindColliderScript;
-    public bool oneBot, playerInControl;
+    public bool oneBot, playerInControl, alertMode, searchMode;
     public Camera droneCam;
+    public GameObject exclamationMark, questionMark;
+    public int layerMaskNum;
 
     
    
@@ -46,10 +48,50 @@ public class DroneMove : MonoBehaviour
         }
 
         //If the robot can see the player
+        
         if(droneSight.canSeePlayer)
         {
-          
+            
+            if (!searchMode)
+            {
+                DroneMode("Alert");
+                alertMode = true;
+            }
+        
+            
+            if(searchMode)
+            {
+                DroneMode("Searching");
+                alertMode = false;
+
+            }
+
+            
         }
+        else
+        {
+            exclamationMark.SetActive(false);
+            questionMark.SetActive(false);
+        }
+
+        if(alertMode && !searchMode)
+        {
+            questionMark.SetActive(true);
+        }
+
+        if (searchMode)
+        {
+            exclamationMark.SetActive(true);
+        }
+        else
+        {
+            exclamationMark.SetActive(false);
+        }
+
+       
+
+        
+
 
         // Prevents the drone form moving when it's turned off
         if (!On)
@@ -64,6 +106,7 @@ public class DroneMove : MonoBehaviour
             droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
+            //droneSight.targetMask = 0;
         }
         else
         {
@@ -71,6 +114,7 @@ public class DroneMove : MonoBehaviour
             droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
+            
         }
 
         //Drone Hacking
@@ -78,8 +122,7 @@ public class DroneMove : MonoBehaviour
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
             bool botsOff = false;
-             behindColliderScript.hackable = false;
-            //StartCoroutine(playerControllerScript.TurnOffAllBots());
+            behindColliderScript.hackable = false;
             playerControllerScript.SetOtherBotsOff();
             botsOff = true;
 
@@ -111,9 +154,55 @@ public class DroneMove : MonoBehaviour
         playerInControl = false;
     }
 
-    void DroneRushPlayer()
+    IEnumerator DroneRushPlayer()
     {
+        
+     
+
+        if (searchMode)
+        {
+             drone.destination = droneSight.playerRef.transform.position;
+
+          
+        }
+       
+
+        yield return new WaitForSeconds(2f);
+         StopCoroutine(DroneRushPlayer());
+    }
+
+    IEnumerator LookTowardsPlayer()
+    {
+
+        drone.destination = this.transform.position;
+        transform.LookAt(droneSight.playerRef.transform.position);
+        yield return new WaitForSeconds(3f);
+        searchMode = true;
+        StopCoroutine(LookTowardsPlayer());
+
+    }
+
+    void DroneMode(string Mode)
+    {
+        switch(Mode)
+        {
+            case "Alert":
+            StartCoroutine(LookTowardsPlayer());
             
+
+
+            break;
+            case "Searching":
+
+              if (droneSight.canSeePlayer)
+            {
+                droneSight.playerRef.transform.position = playerSpawn.transform.position;
+                
+            }
+            break;
+        }
+
+        
     }
 
     void DronePatrol()
@@ -127,6 +216,14 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
+    }
+
+    IEnumerator NoticePlayer()
+    {
+        //StopCoroutine(LookTowardsPlayer());
+        this.transform.LookAt(droneSight.playerRef.transform.position);
+        yield return new WaitForSeconds(3f);
+        StopCoroutine(NoticePlayer());  
     }
     
    void OnDrawGizmos() 
