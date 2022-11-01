@@ -45,6 +45,7 @@ public class DroneMove : MonoBehaviour
         if (On && !droneSight.canSeePlayer)
         {
            DronePatrol();
+           //DroneFollowPath();
         }
 
         //If the robot can see the player
@@ -216,6 +217,22 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
+    }
+
+    void DroneFollowPath()
+    {
+        //drone.destination = patrolPoints[currentPP].transform.position;
+
+
+          for (currentPP = 0; currentPP < patrolPoints.Length; currentPP++)
+          {
+            drone.destination = patrolPoints[currentPP].transform.position;
+
+            if (Vector3.Distance(transform.position, patrolPoints[currentPP].transform.position) < 2)
+            {
+                drone.destination = patrolPoints[currentPP].transform.position;
+            }  
+          }
     }
 
     IEnumerator NoticePlayer()
