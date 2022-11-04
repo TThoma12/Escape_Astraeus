@@ -42,6 +42,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4040571637683223393}
     m_Modifications:
+    - target: {fileID: 7358204641937488417, guid: 9098674b4bde5b04abb2e63d51f80bc0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bd537ebaf90b50468c8b885b6ddd70f, type: 2}
     - target: {fileID: 8527201948683698510, guid: 9098674b4bde5b04abb2e63d51f80bc0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -104,6 +108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4040571637683223393}
     m_Modifications:
+    - target: {fileID: 5003630739768676332, guid: 083f0ffce34f66743934775ba2e251b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d730476a8e2ca64397b20e3149497e3, type: 2}
     - target: {fileID: 6141603092421735555, guid: 083f0ffce34f66743934775ba2e251b9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -166,6 +174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4040571637683223393}
     m_Modifications:
+    - target: {fileID: 7358204641937488417, guid: 9098674b4bde5b04abb2e63d51f80bc0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bd537ebaf90b50468c8b885b6ddd70f, type: 2}
     - target: {fileID: 8527201948683698510, guid: 9098674b4bde5b04abb2e63d51f80bc0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -228,6 +240,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4040571637683223393}
     m_Modifications:
+    - target: {fileID: 5003630739768676332, guid: 083f0ffce34f66743934775ba2e251b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d730476a8e2ca64397b20e3149497e3, type: 2}
     - target: {fileID: 6141603092421735555, guid: 083f0ffce34f66743934775ba2e251b9, type: 3}
       propertyPath: m_RootOrder
       value: 0

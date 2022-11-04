@@ -115,9 +115,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d061e1519f86409e7aed54b63e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRb: {fileID: 0}
+  Interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4ee241ae-e4cc-42a4-b3a3-7be8abf611b0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   playeRotspeed: 90
   playerSpeed: 10
+  botsActivated: 
+  bots: []
+  currentBot: 0
+  prevBot: 0
+  activeBot: 0
+  turnOff: 0
 --- !u!114 &5673696641834809873
 MonoBehaviour:
   m_ObjectHideFlags: 0
