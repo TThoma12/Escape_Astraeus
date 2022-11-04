@@ -24,6 +24,7 @@ public class DroneMove : MonoBehaviour
     public Camera droneCam;
     public GameObject exclamationMark, questionMark;
     public int layerMaskNum;
+    [SerializeField] private int num_Spotted_Player, spottedNum;
 
     
    
@@ -35,6 +36,7 @@ public class DroneMove : MonoBehaviour
         playerControllerScript = playerController.GetComponent<PlayerController>();
         behindColliderScript = behindCollider.GetComponent<BehindCollider>();
         playerInControl = false;
+        spottedNum = 0;
         
     }
 
@@ -50,49 +52,20 @@ public class DroneMove : MonoBehaviour
 
         //If the robot can see the player
         
-        if(droneSight.canSeePlayer)
+        if(droneSight.canSeePlayer)     // Checks weather the drone can see the player usong the drone sight script.
         {
-            
-            if (!searchMode)
-            {
-                DroneMode("Alert");
-                alertMode = true;
-            }
-        
-            
-            if(searchMode)
-            {
-                DroneMode("Searching");
-                alertMode = false;
-
-            }
-
+            StartCoroutine(Set_Num_Spotted_Player());
+            SpottedPlayer();
             
         }
         else
         {
-            exclamationMark.SetActive(false);
-            questionMark.SetActive(false);
+            if(num_Spotted_Player >= 1 || num_Spotted_Player < 3)
+            {
+                StartCoroutine(Increase_Spot_Num());
+            }
+                
         }
-
-        if(alertMode && !searchMode)
-        {
-            questionMark.SetActive(true);
-        }
-
-        if (searchMode)
-        {
-            exclamationMark.SetActive(true);
-        }
-        else
-        {
-            exclamationMark.SetActive(false);
-        }
-
-       
-
-        
-
 
         // Prevents the drone form moving when it's turned off
         if (!On)
@@ -118,7 +91,7 @@ public class DroneMove : MonoBehaviour
             
         }
 
-        //Drone Hacking
+        //Drone Hacking. Checks if the player is behind the the robot and when the player presses E the player becomes the drone.
 
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
@@ -137,9 +110,32 @@ public class DroneMove : MonoBehaviour
            
         }
           
-       
 
     
+    }
+
+    IEnumerator Set_Num_Spotted_Player()
+    {
+        if (num_Spotted_Player == spottedNum)
+        {
+            num_Spotted_Player++;
+            yield return new WaitForSeconds(.1f);
+            StopCoroutine(Set_Num_Spotted_Player());
+            
+        }   
+        
+    }
+
+    IEnumerator Increase_Spot_Num()
+    {
+        spottedNum++;
+        yield return new WaitForSeconds(.1f);
+        StopCoroutine(Increase_Spot_Num());
+    }
+
+    void SpottedPlayer()
+    {
+        drone.destination = this.transform.position;
     }
 
     void ShutdownDrone()
@@ -157,8 +153,6 @@ public class DroneMove : MonoBehaviour
 
     IEnumerator DroneRushPlayer()
     {
-        
-     
 
         if (searchMode)
         {
