@@ -12,7 +12,7 @@ public class DroneMove : MonoBehaviour
     public float rSpeed = 10.0f;
     private NavMeshAgent drone;
     public int randomPP, botID, playerSpottedCounter;
-    public bool On, playerInView;
+    public bool On, playerInView, playerSpotted, droneRushingPlayer;
     private DroneSight droneSight;
     public GameObject player;
     public GameObject playerSpawn;
@@ -20,11 +20,14 @@ public class DroneMove : MonoBehaviour
     public GameObject behindCollider;
     private PlayerController playerControllerScript;
     private BehindCollider behindColliderScript;
-    public bool oneBot, playerInControl, alertMode, searchMode;
+    public bool oneBot, playerInControl, searchMode;
     public Camera droneCam;
     public GameObject exclamationMark, questionMark;
     public int layerMaskNum;
     [SerializeField] private int num_Spotted_Player, spottedNum;
+    private Vector3 player_Last_Seen_pos;
+
+
 
     
    
@@ -43,10 +46,15 @@ public class DroneMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DroneStates();
          
         if (On && !droneSight.canSeePlayer)
         {
-           DronePatrol();
+            if(!droneRushingPlayer)
+            {
+                DronePatrol();
+            }
+           
            //DroneFollowPath();
         }
 
@@ -54,15 +62,20 @@ public class DroneMove : MonoBehaviour
         
         if(droneSight.canSeePlayer)     // Checks weather the drone can see the player usong the drone sight script.
         {
-            StartCoroutine(Set_Num_Spotted_Player());
+            //StartCoroutine(Set_Num_Spotted_Player());
+            playerSpotted = true;
+            drone.destination = this.transform.position;
             SpottedPlayer();
-            
+            player_Last_Seen_pos = droneSight.playerRef.transform.position;
         }
         else
-        {
-            if(num_Spotted_Player >= 1 || num_Spotted_Player < 3)
+        { 
+            if(playerSpotted)
             {
-                StartCoroutine(Increase_Spot_Num());
+                StartCoroutine(Set_Num_Spotted_Player()); // If the drone spots the player it starts the checks how many times it has seen the player. When the player is spotted
+                                                            //The it turns the coroutine, when the player leaves it ticks the number times it has spotted the player plus 1. 
+                
+                playerSpotted = false;
             }
                 
         }
@@ -106,23 +119,44 @@ public class DroneMove : MonoBehaviour
                 botsOff = false;
             }
 
-           
-           
-        }
-          
-
+        }    
     
     }
 
+    void DroneStates()
+    {
+        switch(num_Spotted_Player)
+        {
+           case 1:
+           AlerMode();
+           break;
+           case 2:
+           exclamationMark.SetActive(true);
+           questionMark.SetActive(false);
+           break;
+           case 3:
+           break;
+           case 4:
+           break;    
+        }
+    }
+
+    void AlerMode()
+    {
+        questionMark.SetActive(true);
+        
+    }
+
+    
+
     IEnumerator Set_Num_Spotted_Player()
     {
-        if (num_Spotted_Player == spottedNum)
-        {
+       if (num_Spotted_Player < 2)
+       {
             num_Spotted_Player++;
             yield return new WaitForSeconds(.1f);
             StopCoroutine(Set_Num_Spotted_Player());
-            
-        }   
+       } 
         
     }
 
@@ -135,7 +169,7 @@ public class DroneMove : MonoBehaviour
 
     void SpottedPlayer()
     {
-        drone.destination = this.transform.position;
+        StartCoroutine(DroneRushPlayer(player_Last_Seen_pos));
     }
 
     void ShutdownDrone()
@@ -151,19 +185,31 @@ public class DroneMove : MonoBehaviour
         playerInControl = false;
     }
 
-    IEnumerator DroneRushPlayer()
+    IEnumerator DroneRushPlayer(Vector3 playerPos)
     {
+        droneRushingPlayer = true;
+        Vector3 player_Last_Pos;
+        player_Last_Pos = playerPos;
+        yield return new WaitForSeconds(1f);
+        drone.destination = player_Last_Pos;
 
-        if (searchMode)
-        {
-             drone.destination = droneSight.playerRef.transform.position;
+      
+      
+        StopCoroutine(DroneRushPlayer(playerPos));
+        StartCoroutine(turnDroneRushOff());
+        
+            
+        
+        
+        
+        
+    }
 
-          
-        }
-       
-
-        yield return new WaitForSeconds(2f);
-         StopCoroutine(DroneRushPlayer());
+    IEnumerator turnDroneRushOff()
+    {
+        yield return new WaitForSeconds(5f);
+        droneRushingPlayer = false;
+        StopCoroutine(turnDroneRushOff());
     }
 
     IEnumerator LookTowardsPlayer()
