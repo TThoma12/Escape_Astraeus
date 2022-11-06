@@ -190,10 +190,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d061e1519f86409e7aed54b63e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e1e3146a-7448-4e77-8210-0261a6559d1e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   playeRotspeed: 90
   playerSpeed: 10
-  Bot1: {fileID: 0}
-  Bot2: {fileID: 0}
+  botsActivated: 
+  bots: []
+  currentBot: 0
+  prevBot: 0
+  activeBot: 0
+  turnOff: 0
 --- !u!114 &432770695097794874
 MonoBehaviour:
   m_ObjectHideFlags: 0
