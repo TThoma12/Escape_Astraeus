@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class DroneMove : MonoBehaviour
 {
     public GameObject[] patrolPoints;
@@ -131,8 +132,7 @@ public class DroneMove : MonoBehaviour
            AlerMode();
            break;
            case 2:
-           exclamationMark.SetActive(true);
-           questionMark.SetActive(false);
+           HuntMode();
            break;
            case 3:
            break;
@@ -143,8 +143,15 @@ public class DroneMove : MonoBehaviour
 
     void AlerMode()
     {
+        drone.speed = 8f;
         questionMark.SetActive(true);
         
+    }
+
+    void HuntMode()
+    {
+        exclamationMark.SetActive(true);
+        questionMark.SetActive(false);
     }
 
     
@@ -190,18 +197,14 @@ public class DroneMove : MonoBehaviour
         droneRushingPlayer = true;
         Vector3 player_Last_Pos;
         player_Last_Pos = playerPos;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         drone.destination = player_Last_Pos;
 
-      
       
         StopCoroutine(DroneRushPlayer(playerPos));
         StartCoroutine(turnDroneRushOff());
         
-            
-        
-        
-        
+  
         
     }
 
