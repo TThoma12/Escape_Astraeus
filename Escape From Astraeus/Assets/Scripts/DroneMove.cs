@@ -92,7 +92,7 @@ public class DroneMove : MonoBehaviour
         if (playerControllerScript.prevBot == botID)
         {
             ShutdownDrone();
-            droneCam.enabled = true;
+            //droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
             //droneSight.targetMask = 0;
@@ -100,7 +100,7 @@ public class DroneMove : MonoBehaviour
         else
         {
             turnOnDrone();
-            droneCam.enabled = false;
+            //droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
             

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -56,6 +57,10 @@ public class PlayerController : MonoBehaviour
         //botsActivated[0] = true;
         
     }
+    void LateUpdate() 
+    {
+        
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -100,9 +105,9 @@ public class PlayerController : MonoBehaviour
                  case 2:
                     bots[2].transform.Translate(0,0,forward);
                     bots[2].transform.Rotate(0,rotate,0);
-                    droneMoveScript = bots[2].GetComponent<DroneMove>();
-                    //SetOtherBotsOff();
-                    droneMoveScript.playerInControl = true;
+                    // droneMoveScript = bots[2].GetComponent<DroneMove>();
+                    // //SetOtherBotsOff();
+                    // droneMoveScript.playerInControl = true;
                    // droneMoveScript.botID = 2;
                     prevBot = 2;
             
@@ -152,75 +157,8 @@ public class PlayerController : MonoBehaviour
            
         }
 
+  
         
-
-      
-        // switch(botNum)
-        // {
-        //     case 0:
-        //     botsActivated[0] = true;
-        //     botsActivated[1] = false;
-        //     botsActivated[2] = false;
-        //     botsActivated[3] = false;
-        //     botsActivated[4] = false;
-        //     botsActivated[5] = false;
-        //     botsActivated[6] = false;
-        //     break;
-        //     case 1:
-        //     botsActivated[0] = false;
-        //     botsActivated[1] = true;
-        //     botsActivated[2] = false;
-        //     botsActivated[3] = false;
-        //     botsActivated[4] = false;
-        //     botsActivated[5] = false;
-        //     botsActivated[6] = false;
-        //     break;
-        //     case 2:
-        //     botsActivated[0] = false;
-        //     botsActivated[1] = false;
-        //     botsActivated[2] = true;
-        //     botsActivated[3] = false;
-        //     botsActivated[4] = false;
-        //     botsActivated[5] = false;
-        //     botsActivated[6] = false;
-        //     break;
-        //     case 3:
-        //     botsActivated[0] = false;
-        //     botsActivated[1] = false;
-        //     botsActivated[2] = false;
-        //     botsActivated[3] = true;
-        //     botsActivated[4] = false;
-        //     botsActivated[5] = false;
-        //     botsActivated[6] = false;
-        //     break;
-        //     case 4:
-        //     botsActivated[0] = false;
-        //     botsActivated[1] = false;
-        //     botsActivated[2] = false;
-        //     botsActivated[3] = false;
-        //     botsActivated[4] = true;
-        //     botsActivated[5] = false;
-        //     botsActivated[6] = false;
-        //     break;
-        //     case 5:
-        //     botsActivated[0] = false;
-        //     botsActivated[1] = false;
-        //     botsActivated[2] = false;
-        //     botsActivated[3] = false;
-        //     botsActivated[4] = false;
-        //     botsActivated[5] = true;
-        //     botsActivated[6] = false;
-        //     break;
-        //     case 6:
-        //     botsActivated[0] = false;
-        //     botsActivated[1] = false;
-        //     botsActivated[2] = false;
-        //     botsActivated[3] = false;
-        //     botsActivated[4] = false;
-        //     botsActivated[5] = false;
-        //     botsActivated[6] = true;
-        //     break;
-        // }
     }
 
     void Update() 
