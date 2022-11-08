@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] bots;
     public int  currentBot, prevBot, activeBot;
     public bool turnOff;
+    public CinemachineVirtualCamera mainCam;
    
 
     private void Awake() 
@@ -85,6 +86,8 @@ public class PlayerController : MonoBehaviour
                     bots[0].transform.Translate(0,0,forward);
                     bots[0].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[0].GetComponent<DroneMove>();
+                    mainCam.m_Follow = bots[0].transform;
+                    mainCam.m_LookAt = bots[0].transform;
                      //SetOtherBotsOff();
                     droneMoveScript.playerInControl = true;
                     //droneMoveScript.botID = 0;
@@ -96,6 +99,8 @@ public class PlayerController : MonoBehaviour
                     bots[1].transform.Translate(0,0,forward);
                     bots[1].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[1].GetComponent<DroneMove>();
+                    mainCam.m_Follow = bots[1].transform;
+                    mainCam.m_LookAt = bots[1].transform;
                      //SetOtherBotsOff();
                     droneMoveScript.playerInControl = true;
                     //droneMoveScript.botID = 1;
@@ -105,6 +110,8 @@ public class PlayerController : MonoBehaviour
                  case 2:
                     bots[2].transform.Translate(0,0,forward);
                     bots[2].transform.Rotate(0,rotate,0);
+                    mainCam.m_Follow = bots[2].transform;
+                    mainCam.m_LookAt = bots[2].transform;
                     // droneMoveScript = bots[2].GetComponent<DroneMove>();
                     // //SetOtherBotsOff();
                     // droneMoveScript.playerInControl = true;
