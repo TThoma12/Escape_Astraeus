@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class DroneMove : MonoBehaviour
 {
     public GameObject[] patrolPoints;
-    int currentPP = 0;
+    public int currentPP = 0;
    
     public float speed;
     public float rSpeed = 10.0f;
@@ -54,7 +54,8 @@ public class DroneMove : MonoBehaviour
         {
             if(!droneRushingPlayer)
             {
-                DronePatrol();
+                //DronePatrol();
+                DroneFollowPath();
             }
            
            //DroneFollowPath();
@@ -265,18 +266,40 @@ public class DroneMove : MonoBehaviour
 
     void DroneFollowPath()
     {
-        //drone.destination = patrolPoints[currentPP].transform.position;
-
-
-          for (currentPP = 0; currentPP < patrolPoints.Length; currentPP++)
-          {
-            drone.destination = patrolPoints[currentPP].transform.position;
+        //currentPP = 0;
+        drone.destination = patrolPoints[currentPP].transform.position;
+        
+        if(currentPP < patrolPoints.Length)
+        {
 
             if (Vector3.Distance(transform.position, patrolPoints[currentPP].transform.position) < 2)
             {
-                drone.destination = patrolPoints[currentPP].transform.position;
-            }  
-          }
+                 
+                if (currentPP < patrolPoints.Length -1)
+                {
+                   
+                    drone.destination = patrolPoints[currentPP].transform.position;
+                    currentPP++;
+                    //DroneFollowPath();
+                }
+                else
+                {
+                    currentPP = 0;
+                    drone.destination = patrolPoints[currentPP].transform.position;
+                }
+                   
+                
+                
+                
+            } 
+            // if (currentPP == patrolPoints.Length)
+            // {
+            //             currentPP = 0;
+            //             drone.destination = patrolPoints[currentPP].transform.position;
+            //             //DroneFollowPath();
+            // }
+        }
+       
     }
 
     IEnumerator NoticePlayer()
