@@ -91,7 +91,8 @@ public class DroneMove : MonoBehaviour
         // Prevents the drone form moving when it's turned off
         if (!On)
         {
-            drone.destination = this.transform.position;
+            //drone.destination = this.transform.position;
+            StartCoroutine(turnDroneRushOff());
             
         }
 
@@ -160,6 +161,10 @@ public class DroneMove : MonoBehaviour
     {
         exclamationMark.SetActive(true);
         questionMark.SetActive(false);
+        if (playerSpotted)
+        {
+            //playerControllerScript.botsActivated[] = playerSpawn.transform.position;
+        }
     }
 
     
@@ -218,7 +223,8 @@ public class DroneMove : MonoBehaviour
 
     IEnumerator turnDroneRushOff()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(.1f);
+        drone.destination = this.transform.position;
         droneRushingPlayer = false;
         StopCoroutine(turnDroneRushOff());
     }

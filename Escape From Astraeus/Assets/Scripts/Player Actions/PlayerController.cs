@@ -124,6 +124,8 @@ public class PlayerController : MonoBehaviour
                     bots[3].transform.Translate(0,0,forward);
                     bots[3].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[3].GetComponent<DroneMove>();
+                    mainCam.m_Follow = bots[3].transform;
+                    mainCam.m_LookAt = bots[3].transform;
                      //SetOtherBotsOff();
                     droneMoveScript.playerInControl = true;
                     //droneMoveScript.botID = 3;
