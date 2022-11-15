@@ -48,8 +48,13 @@ public class DroneMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DroneStates();
-         
+        if(!playerInControl)
+        {
+            DroneStates();
+        }
+        
+        
+
         if (On && !droneSight.canSeePlayer)
         {
             if(!droneRushingPlayer)
@@ -87,6 +92,7 @@ public class DroneMove : MonoBehaviour
         if (!On)
         {
             drone.destination = this.transform.position;
+            
         }
 
         //Checks if the player is currenty on controlling the robot
@@ -292,12 +298,7 @@ public class DroneMove : MonoBehaviour
                 
                 
             } 
-            // if (currentPP == patrolPoints.Length)
-            // {
-            //             currentPP = 0;
-            //             drone.destination = patrolPoints[currentPP].transform.position;
-            //             //DroneFollowPath();
-            // }
+
         }
        
     }

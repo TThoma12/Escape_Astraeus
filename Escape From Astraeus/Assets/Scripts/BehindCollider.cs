@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class BehindCollider : MonoBehaviour
 {
     public bool playerIsBehind, hackable;
-    public GameObject takeOverText;
+    //public GameObject takeOverText;
     private PlayerController playerControllerScript;
     public GameObject playerController;
     // Start is called before the first frame update
     void Start()
     {
         playerControllerScript = playerController.GetComponent<PlayerController>();
-        takeOverText.SetActive(false);
+        //takeOverText.SetActive(false);
         
     }
 
@@ -22,11 +22,11 @@ public class BehindCollider : MonoBehaviour
     {
          if(playerIsBehind == true && hackable == true)
         {
-             takeOverText.SetActive(true);
+             //takeOverText.SetActive(true);
         }
          if(!hackable)
         {
-            takeOverText.SetActive(false);
+            //takeOverText.SetActive(false);
         }
     }
      void OnTriggerEnter(Collider collider) 
@@ -46,7 +46,7 @@ public class BehindCollider : MonoBehaviour
          if (collider.gameObject.tag == "Player")
         {
             playerIsBehind = false;
-            takeOverText.SetActive(false);
+            //takeOverText.SetActive(false);
             hackable = false;
             StopAllCoroutines();
         }
