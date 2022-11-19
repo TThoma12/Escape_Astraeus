@@ -60,6 +60,7 @@ public class DroneMove : MonoBehaviour
             if(!droneRushingPlayer)
             {
                 //DronePatrol();
+                drone.isStopped = false;
                 DroneFollowPath();
             }
            
@@ -91,8 +92,9 @@ public class DroneMove : MonoBehaviour
         // Prevents the drone form moving when it's turned off
         if (!On)
         {
-            //drone.destination = this.transform.position;
-            StartCoroutine(turnDroneRushOff());
+            drone.destination = this.transform.position;
+            drone.isStopped = true;
+            //StartCoroutine(turnDroneRushOff());
             
         }
 
@@ -107,6 +109,7 @@ public class DroneMove : MonoBehaviour
         }
         else
         {
+            // If the player is not in control set the tag  of the drone to "Drone"
             turnOnDrone();
             //droneCam.enabled = false;
             tag = "Drone";
