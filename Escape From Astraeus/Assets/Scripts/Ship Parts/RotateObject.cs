@@ -18,7 +18,7 @@ public class RotateObject : MonoBehaviour
     {
         if(on)
         {
-            this.transform.Rotate(0,rotSpeed * Time.deltaTime,0 , Space.World);
+            this.transform.Rotate(0,0,rotSpeed * Time.deltaTime);
         }
     }
 }

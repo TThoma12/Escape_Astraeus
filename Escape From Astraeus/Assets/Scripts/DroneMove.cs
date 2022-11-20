@@ -138,7 +138,7 @@ public class DroneMove : MonoBehaviour
 
     void DroneStates()
     {
-        switch(playerControllerScript.num_Spotted_Player)
+        switch(num_Spotted_Player)
         {
            case 1:
            AlerMode();
@@ -157,7 +157,6 @@ public class DroneMove : MonoBehaviour
     {
         drone.speed = 8f;
         questionMark.SetActive(true);
-        StartCoroutine(Set_Num_Spotted_Player());
         
     }
 
@@ -177,8 +176,7 @@ public class DroneMove : MonoBehaviour
     {
        if (num_Spotted_Player < 2)
        {
-            //num_Spotted_Player++;
-            playerControllerScript.num_Spotted_Player++;
+            num_Spotted_Player++;
             yield return new WaitForSeconds(.1f);
             StopCoroutine(Set_Num_Spotted_Player());
        } 
@@ -215,14 +213,15 @@ public class DroneMove : MonoBehaviour
         droneRushingPlayer = true;
         Vector3 player_Last_Pos;
         player_Last_Pos = playerPos;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         drone.destination = player_Last_Pos;
-        
+
+      
         StopCoroutine(DroneRushPlayer(playerPos));
         StartCoroutine(turnDroneRushOff());
         
+  
         
-
     }
 
     IEnumerator turnDroneRushOff()
