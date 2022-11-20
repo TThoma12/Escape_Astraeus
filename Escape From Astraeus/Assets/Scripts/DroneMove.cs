@@ -81,7 +81,7 @@ public class DroneMove : MonoBehaviour
         { 
             if(playerSpotted)
             {
-                StartCoroutine(Set_Num_Spotted_Player()); // If the drone spots the player it starts the checks how many times it has seen the player. When the player is spotted
+                StartCoroutine(Set_Num_Spotted_Player(true)); // If the drone spots the player it starts the checks how many times it has seen the player. When the player is spotted
                                                             //The it turns the coroutine, when the player leaves it ticks the number times it has spotted the player plus 1. 
                 
                 playerSpotted = false;
@@ -157,7 +157,7 @@ public class DroneMove : MonoBehaviour
     {
         drone.speed = 8f;
         questionMark.SetActive(true);
-        StartCoroutine(Set_Num_Spotted_Player());
+        StartCoroutine(Set_Num_Spotted_Player(true));
         
     }
 
@@ -173,15 +173,22 @@ public class DroneMove : MonoBehaviour
 
     
 
-    IEnumerator Set_Num_Spotted_Player()
+    IEnumerator Set_Num_Spotted_Player(bool increase)
     {
-       if (num_Spotted_Player < 2)
+       if (num_Spotted_Player < 2 && increase)
        {
             //num_Spotted_Player++;
             playerControllerScript.num_Spotted_Player++;
             yield return new WaitForSeconds(.1f);
-            StopCoroutine(Set_Num_Spotted_Player());
+            StopCoroutine(Set_Num_Spotted_Player(increase));
        } 
+
+        if (num_Spotted_Player < 2 && !increase)
+       {
+            playerControllerScript.num_Spotted_Player--;
+            yield return new WaitForSeconds(.1f);
+            StopCoroutine(Set_Num_Spotted_Player(increase));
+       }
         
     }
 
