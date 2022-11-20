@@ -121,6 +121,7 @@ public class DroneMove : MonoBehaviour
 
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
+            StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
             playerControllerScript.SetOtherBotsOff();
@@ -138,10 +139,14 @@ public class DroneMove : MonoBehaviour
 
     void DroneStates()
     {
-        switch(num_Spotted_Player)
+        switch(playerControllerScript.num_Spotted_Player)
         {
+           case 0:
+           defaultMode();
+           break; 
            case 1:
            AlerMode();
+            StartCoroutine(Set_Num_Spotted_Player(true));
            break;
            case 2:
            HuntMode();
@@ -170,6 +175,13 @@ public class DroneMove : MonoBehaviour
         }
     }
 
+    void defaultMode()
+    {
+        drone.speed = 3.5f;
+        exclamationMark.SetActive(false);
+        questionMark.SetActive(false);
+    }
+
     
 
     IEnumerator Set_Num_Spotted_Player(bool increase)
@@ -181,6 +193,13 @@ public class DroneMove : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             StopCoroutine(Set_Num_Spotted_Player(increase));
        } 
+
+       if (playerControllerScript.num_Spotted_Player == 2 && !increase)
+       {
+            playerControllerScript.num_Spotted_Player = 0;
+            yield return new WaitForSeconds(.1f);
+            StopCoroutine(Set_Num_Spotted_Player(increase));
+       }
         
     }
 
@@ -204,9 +223,7 @@ public class DroneMove : MonoBehaviour
 
     void turnOnDrone()
     {
-        On = true;
-        droneSight.enabled = true;
-        playerInControl = false;
+       StartCoroutine(turnDroneOn());
     }
 
     IEnumerator DroneRushPlayer(Vector3 playerPos)
@@ -242,6 +259,15 @@ public class DroneMove : MonoBehaviour
         searchMode = true;
         StopCoroutine(LookTowardsPlayer());
 
+    }
+
+    IEnumerator turnDroneOn()
+    {
+        yield return new WaitForSeconds(3f);
+        On = true;
+        droneSight.enabled = true;
+        playerInControl = false;
+        StopCoroutine(turnDroneOn());
     }
 
     void DroneMode(string Mode)
