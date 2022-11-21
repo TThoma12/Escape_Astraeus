@@ -171,7 +171,7 @@ public class DroneMove : MonoBehaviour
         questionMark.SetActive(false);
         if (playerSpotted)
         {
-            //playerControllerScript.botsActivated[] = playerSpawn.transform.position;
+            playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
         }
     }
 
