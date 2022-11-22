@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1368012641404806022}
-  - component: {fileID: 2689761316442369059}
-  - component: {fileID: 195630483952015593}
   - component: {fileID: 1546583237614109802}
   - component: {fileID: 1546583237614109801}
   - component: {fileID: 1546583237614109800}
@@ -18,7 +16,7 @@ GameObject:
   - component: {fileID: 3361548798347578055}
   - component: {fileID: 5820369763880640351}
   - component: {fileID: 8596751785885503535}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TConeectionVent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,56 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!33 &2689761316442369059
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853223083165169980}
-  m_Mesh: {fileID: 0}
---- !u!23 &195630483952015593
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853223083165169980}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d13e5015aa276d04587a02a582f05edb, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1546583237614109802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245,9 +193,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8344016687179062466, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6732275413419428952, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4259905827059063510, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3901781511676787332, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3511150865171344884, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
       propertyPath: m_Name
       value: NTVentT
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9586fe8ccf80c174d97c29e3351c4f7a, type: 3}
