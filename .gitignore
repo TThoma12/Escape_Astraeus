@@ -16,6 +16,7 @@ Build/
 Builds/
 Logs/
 Bin/
+UserSettings/
 
 # erroneous meta files 
 library.meta
