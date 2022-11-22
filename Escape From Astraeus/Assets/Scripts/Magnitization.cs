@@ -11,6 +11,7 @@ public class Magnitization : MonoBehaviour
     public GameObject playerController;
     private PlayerController playerControllerScript;
     public bool crateInView, holdingCrate;
+    public int moveDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -38,17 +39,23 @@ public class Magnitization : MonoBehaviour
 
         if(playerControllerScript.Interact.triggered && crateInView == true)
         {
-            holdingCrate = true;
-            if (holdingCrate)
-            {
-                holdingCrate = false;
-            }
+            //holdingCrate = true;
+            // if (holdingCrate)
+            // {
+            //     holdingCrate = false;
+            // }
+            hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z + moveDistance * Time.deltaTime);
             
         }
 
-        if (holdingCrate)
-            {
-                hit.transform.position = rayEndPoint.transform.position;
-            }
+        if(playerControllerScript.BotSwitch.triggered && crateInView == true)
+        {
+            hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z - moveDistance * Time.deltaTime);
+        }
+
+        // if (holdingCrate)
+        //     {
+        //         hit.transform.position = rayEndPoint.transform.position;
+        //     }
     }
 }
