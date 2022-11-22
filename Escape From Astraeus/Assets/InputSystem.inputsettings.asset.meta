@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Escape From Astraeus/Assets/InputSystem.inputsettings.asset.meta
 guid: d3d7f1daefa8f894dbc73844a2459694
+========
+guid: e90c22811e5da5b40a81a22cf11bc54e
+>>>>>>>> 178c39f27edc7d80ce2e108b2f55f3bd3afe5bbd:Escape From Astraeus/Assets/Ai Bot (2).controller.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 9100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

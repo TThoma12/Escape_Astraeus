@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Escape From Astraeus/Assets/Scenes/Station_Level 1/NavMesh.asset.meta
 guid: 457452ee62d195e41968e89b6f458851
+========
+guid: 24edccb1ef395884bbc2a9027ec542bb
+>>>>>>>> 178c39f27edc7d80ce2e108b2f55f3bd3afe5bbd:Escape From Astraeus/Assets/Forward Test.anim.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
