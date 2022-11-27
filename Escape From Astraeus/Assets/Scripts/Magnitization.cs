@@ -32,18 +32,17 @@ public class Magnitization : MonoBehaviour
         }
         else
         {
+            //Debug.Log("Hit Crate");
             crateInView = false;
         }
+       
+        
 
 
 
         if(playerControllerScript.Interact.triggered && crateInView == true)
         {
             //holdingCrate = true;
-            // if (holdingCrate)
-            // {
-            //     holdingCrate = false;
-            // }
             hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z + moveDistance * Time.deltaTime);
             
         }
@@ -52,10 +51,6 @@ public class Magnitization : MonoBehaviour
         {
             hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z - moveDistance * Time.deltaTime);
         }
-
-        // if (holdingCrate)
-        //     {
-        //         hit.transform.position = rayEndPoint.transform.position;
-        //     }
-    }
 }
+    }
+
