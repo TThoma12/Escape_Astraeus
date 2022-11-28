@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Unity.AI.Navigation;
 
 public class Magnitization : MonoBehaviour
 {
@@ -13,12 +13,13 @@ public class Magnitization : MonoBehaviour
     private PlayerController playerControllerScript;
     public bool crateInView, holdingCrate;
     public int moveDistance;
-    
+    public NavMeshSurface navMesh;
 
     // Start is called before the first frame update
     void Start()
     {
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        //navMesh.BuildNavMesh();
     }
 
     // Update is called once per frame
@@ -50,12 +51,14 @@ public class Magnitization : MonoBehaviour
         {
             //holdingCrate = true;
             hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z + moveDistance * Time.deltaTime);
+            //navMesh.BuildNavMesh();
             
         }
 
         if(playerControllerScript.BotSwitch.triggered && crateInView == true)
         {
             hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z - moveDistance * Time.deltaTime);
+            //navMesh.BuildNavMesh();
         }
 }
     }
