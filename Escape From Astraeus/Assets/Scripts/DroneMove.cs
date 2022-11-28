@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class DroneMove : MonoBehaviour
 {
     public GameObject[] patrolPoints;
-    int currentPP = 0;
+    public int currentPP = 0;
    
     public float speed;
     public float rSpeed = 10.0f;
@@ -48,13 +48,20 @@ public class DroneMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DroneStates();
-         
+        if(!playerInControl)
+        {
+            DroneStates();
+        }
+        
+        
+
         if (On && !droneSight.canSeePlayer)
         {
             if(!droneRushingPlayer)
             {
-                DronePatrol();
+                //DronePatrol();
+                drone.isStopped = false;
+                DroneFollowPath();
             }
            
            //DroneFollowPath();
@@ -74,7 +81,7 @@ public class DroneMove : MonoBehaviour
         { 
             if(playerSpotted)
             {
-                StartCoroutine(Set_Num_Spotted_Player()); // If the drone spots the player it starts the checks how many times it has seen the player. When the player is spotted
+                StartCoroutine(Set_Num_Spotted_Player(true)); // If the drone spots the player it starts the checks how many times it has seen the player. When the player is spotted
                                                             //The it turns the coroutine, when the player leaves it ticks the number times it has spotted the player plus 1. 
                 
                 playerSpotted = false;
@@ -86,6 +93,9 @@ public class DroneMove : MonoBehaviour
         if (!On)
         {
             drone.destination = this.transform.position;
+            drone.isStopped = true;
+            //StartCoroutine(turnDroneRushOff());
+            
         }
 
         //Checks if the player is currenty on controlling the robot
@@ -99,6 +109,7 @@ public class DroneMove : MonoBehaviour
         }
         else
         {
+            // If the player is not in control set the tag  of the drone to "Drone"
             turnOnDrone();
             //droneCam.enabled = false;
             tag = "Drone";
@@ -110,6 +121,7 @@ public class DroneMove : MonoBehaviour
 
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
+            StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
             playerControllerScript.SetOtherBotsOff();
@@ -127,10 +139,14 @@ public class DroneMove : MonoBehaviour
 
     void DroneStates()
     {
-        switch(num_Spotted_Player)
+        switch(playerControllerScript.num_Spotted_Player)
         {
+           case 0:
+           defaultMode();
+           break; 
            case 1:
            AlerMode();
+            StartCoroutine(Set_Num_Spotted_Player(true));
            break;
            case 2:
            HuntMode();
@@ -153,18 +169,37 @@ public class DroneMove : MonoBehaviour
     {
         exclamationMark.SetActive(true);
         questionMark.SetActive(false);
+        if (playerSpotted)
+        {
+            playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+        }
+    }
+
+    void defaultMode()
+    {
+        drone.speed = 3.5f;
+        exclamationMark.SetActive(false);
+        questionMark.SetActive(false);
     }
 
     
 
-    IEnumerator Set_Num_Spotted_Player()
+    IEnumerator Set_Num_Spotted_Player(bool increase)
     {
-       if (num_Spotted_Player < 2)
+       if (playerControllerScript.num_Spotted_Player < 2 && increase)
        {
-            num_Spotted_Player++;
+            //num_Spotted_Player++;
+            playerControllerScript.num_Spotted_Player++;
             yield return new WaitForSeconds(.1f);
-            StopCoroutine(Set_Num_Spotted_Player());
+            StopCoroutine(Set_Num_Spotted_Player(increase));
        } 
+
+       if (playerControllerScript.num_Spotted_Player == 2 && !increase)
+       {
+            playerControllerScript.num_Spotted_Player = 0;
+            yield return new WaitForSeconds(.1f);
+            StopCoroutine(Set_Num_Spotted_Player(increase));
+       }
         
     }
 
@@ -188,9 +223,7 @@ public class DroneMove : MonoBehaviour
 
     void turnOnDrone()
     {
-        On = true;
-        droneSight.enabled = true;
-        playerInControl = false;
+       StartCoroutine(turnDroneOn());
     }
 
     IEnumerator DroneRushPlayer(Vector3 playerPos)
@@ -211,7 +244,8 @@ public class DroneMove : MonoBehaviour
 
     IEnumerator turnDroneRushOff()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(.1f);
+        drone.destination = this.transform.position;
         droneRushingPlayer = false;
         StopCoroutine(turnDroneRushOff());
     }
@@ -225,6 +259,15 @@ public class DroneMove : MonoBehaviour
         searchMode = true;
         StopCoroutine(LookTowardsPlayer());
 
+    }
+
+    IEnumerator turnDroneOn()
+    {
+        yield return new WaitForSeconds(3f);
+        On = true;
+        droneSight.enabled = true;
+        playerInControl = false;
+        StopCoroutine(turnDroneOn());
     }
 
     void DroneMode(string Mode)
@@ -265,18 +308,35 @@ public class DroneMove : MonoBehaviour
 
     void DroneFollowPath()
     {
-        //drone.destination = patrolPoints[currentPP].transform.position;
-
-
-          for (currentPP = 0; currentPP < patrolPoints.Length; currentPP++)
-          {
-            drone.destination = patrolPoints[currentPP].transform.position;
+        //currentPP = 0;
+        drone.destination = patrolPoints[currentPP].transform.position;
+        
+        if(currentPP < patrolPoints.Length)
+        {
 
             if (Vector3.Distance(transform.position, patrolPoints[currentPP].transform.position) < 2)
             {
-                drone.destination = patrolPoints[currentPP].transform.position;
-            }  
-          }
+                 
+                if (currentPP < patrolPoints.Length -1)
+                {
+                   
+                    drone.destination = patrolPoints[currentPP].transform.position;
+                    currentPP++;
+                    //DroneFollowPath();
+                }
+                else
+                {
+                    currentPP = 0;
+                    drone.destination = patrolPoints[currentPP].transform.position;
+                }
+                   
+                
+                
+                
+            } 
+
+        }
+       
     }
 
     IEnumerator NoticePlayer()

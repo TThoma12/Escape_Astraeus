@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 161998301514509011}
   - component: {fileID: 3859676198270543222}
   - component: {fileID: 1329868403621679548}
+  - component: {fileID: 8763322074768782681}
   m_Layer: 0
   m_Name: ConveyorBeltCorner
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8763322074768782681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681266425432469609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 154.47961, y: 14.272369, z: 207.7762}
+  m_Center: {x: -76.05679, y: 7.1361847, z: 103.8881}

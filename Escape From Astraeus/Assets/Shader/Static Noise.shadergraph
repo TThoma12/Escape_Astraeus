@@ -386,7 +386,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 500.0,
+    "m_Value": 1000.0,
     "m_DefaultValue": 10.0,
     "m_Labels": []
 }
@@ -463,10 +463,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -885.0000610351563,
-            "y": 490.0000305175781,
-            "width": 208.0,
-            "height": 301.9999694824219
+            "x": -875.0000610351563,
+            "y": 491.0000305175781,
+            "width": 208.0001220703125,
+            "height": 302.0000305175781
         }
     },
     "m_Slots": [
@@ -1053,7 +1053,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
@@ -1363,7 +1363,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 2000.0,
+        "x": 210.0,
         "y": 2.0,
         "z": 2.0,
         "w": 2.0
@@ -1425,7 +1425,7 @@
             "a": 0.0
         },
         "key6": {
-            "r": 1.0,
+            "r": 0.801886796951294,
             "g": 0.0,
             "b": 0.0,
             "a": 0.0
@@ -1441,8 +1441,8 @@
         "ctime2": 18890,
         "ctime3": 21288,
         "ctime4": 21611,
-        "ctime5": 26300,
-        "ctime6": 26600,
+        "ctime5": 21773,
+        "ctime6": 28240,
         "ctime7": 33924,
         "atime0": 0,
         "atime1": 65535,
@@ -1453,7 +1453,7 @@
         "atime6": 0,
         "atime7": 0,
         "m_Mode": 1,
-        "m_NumColorKeys": 8,
+        "m_NumColorKeys": 7,
         "m_NumAlphaKeys": 2
     },
     "m_DefaultValue": {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7999793384371106956}
   - component: {fileID: 7999793384371106957}
   - component: {fileID: 7999793384371106955}
+  - component: {fileID: 7524684430047090780}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7999793384371106958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.30202174, y: 0.25368977, z: 0.122550964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -64,7 +65,9 @@ MonoBehaviour:
   currentBot: 0
   prevBot: 0
   activeBot: 0
+  num_Spotted_Player: 0
   turnOff: 0
+  mainCam: {fileID: 0}
 --- !u!114 &7999793384371106955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,3 +80,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8967a658d45943438e14c344c3e0bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7524684430047090780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999793384371106958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b23247e66835f04c96cdc04708b8fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player_Ship_Parts: 00000000

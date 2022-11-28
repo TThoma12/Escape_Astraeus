@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private DroneSight droneSightScript;
     public bool[] botsActivated;
     public GameObject[] bots;
-    public int  currentBot, prevBot, activeBot;
+    public int  currentBot, prevBot, activeBot, num_Spotted_Player;
     public bool turnOff;
     public CinemachineVirtualCamera mainCam;
    
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         playerControls = new PlayerInput();
         playerSwitcher = FindObjectOfType<PlayerSwitcher>();
+        num_Spotted_Player = 0;
     }
     private void OnEnable()
     {
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
         rotate *= Time.deltaTime;
 
 
+        //Sets which of the bots the player is controlling
         for(currentBot = 0; currentBot < botsActivated.Length; currentBot++)
         {
              if (botsActivated[currentBot])
@@ -124,6 +126,8 @@ public class PlayerController : MonoBehaviour
                     bots[3].transform.Translate(0,0,forward);
                     bots[3].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[3].GetComponent<DroneMove>();
+                    mainCam.m_Follow = bots[3].transform;
+                    mainCam.m_LookAt = bots[3].transform;
                      //SetOtherBotsOff();
                     droneMoveScript.playerInControl = true;
                     //droneMoveScript.botID = 3;
@@ -146,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
         currentBot = 0;
       
-        
+      
 
     }
 
