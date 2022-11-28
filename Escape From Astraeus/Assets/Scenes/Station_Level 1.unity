@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1252378, g: 0.011092756, b: 0.046087302, a: 1}
+  m_IndirectSpecularColor: {r: 0.12523198, g: 0.011082425, b: 0.046085164, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -48888,7 +48888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7569625156394055382, guid: 424daf2a51f79f64ca927f717e0a9e29, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7569625156394055382, guid: 424daf2a51f79f64ca927f717e0a9e29, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90075,12 +90075,16 @@ PrefabInstance:
       value: 306
       objectReference: {fileID: 0}
     - target: {fileID: 7569625156394055382, guid: 424daf2a51f79f64ca927f717e0a9e29, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0101499995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569625156394055382, guid: 424daf2a51f79f64ca927f717e0a9e29, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.005928
       objectReference: {fileID: 0}
     - target: {fileID: 7569625156394055382, guid: 424daf2a51f79f64ca927f717e0a9e29, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.052
       objectReference: {fileID: 0}
     - target: {fileID: 7569625156394055382, guid: 424daf2a51f79f64ca927f717e0a9e29, type: 3}
       propertyPath: m_LocalPosition.z
@@ -93800,6 +93804,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6036269757532782321, guid: 73092a8c7c0e98444bc23d5b41c7d2f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b683b877f106dc4286b2c3c8cd29893, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73092a8c7c0e98444bc23d5b41c7d2f2, type: 3}
 --- !u!4 &5077352338651397454 stripped
