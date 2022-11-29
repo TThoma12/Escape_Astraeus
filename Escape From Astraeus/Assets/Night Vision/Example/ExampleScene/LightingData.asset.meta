@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Escape From Astraeus/Assets/Night Vision/Example/ExampleScene/LightingData.asset.meta
 guid: fabf52fb87a353e47995e7dca76c3ad2
-========
-guid: 428b23a84af99114ea1e1558df306c20
->>>>>>>> 15a93dfd41429f0194fa636bc8dedd2ed62f5fce:Escape From Astraeus/Assets/Material/Level/Environment/ConveyorBelt/Conveyor Support/Support.mat.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
