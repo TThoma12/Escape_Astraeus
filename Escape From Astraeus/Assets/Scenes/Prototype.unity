@@ -17093,7 +17093,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 290fd5ea0c9c00444af4775c0a4276bd, type: 2}
     - target: {fileID: 919132149155446097, guid: ba557422da31782408b6c526210190dc, type: 3}
       propertyPath: m_Name
-      value: CrateTest3
+      value: CrateTest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba557422da31782408b6c526210190dc, type: 3}
