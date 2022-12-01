@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerControls;
     private InputAction move;
     private InputAction flyUp;
-    private InputAction BotSwitch;
+    public InputAction BotSwitch;
     public InputAction Interact;
     public float playeRotspeed = 50.0f;
     public float playerSpeed = 5.0f;

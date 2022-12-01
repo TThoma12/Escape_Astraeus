@@ -9,6 +9,7 @@ TagManager:
   - Gravity Component
   - Superconductor
   - ' Power Cell'
+  - Crate
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Player
   - Obstructions
   - Post Processing
-  - 
+  - Crates
   - 
   - 
   - 

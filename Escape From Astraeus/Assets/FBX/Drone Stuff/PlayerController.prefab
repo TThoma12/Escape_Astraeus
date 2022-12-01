@@ -46,6 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d061e1519f86409e7aed54b63e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotSwitch:
+    m_Name: Bot Switch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c97c0c73-bfa5-48d2-9fbf-f5be6fc49734
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   Interact:
     m_Name: Interact
     m_Type: 0
