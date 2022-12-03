@@ -160,7 +160,7 @@ public class DroneMove : MonoBehaviour
 
     void AlerMode()
     {
-        drone.speed = 8f;
+        drone.speed = 4f;
         questionMark.SetActive(true);
         
     }

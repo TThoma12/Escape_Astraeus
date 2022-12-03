@@ -10,6 +10,9 @@ TagManager:
   - Superconductor
   - ' Power Cell'
   - Crate
+  - CrateStopper
+  - CrateZ
+  - CrateX
   layers:
   - Default
   - TransparentFX
