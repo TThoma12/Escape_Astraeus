@@ -28,6 +28,7 @@ public class DroneMove : MonoBehaviour
     public int layerMaskNum;
     [SerializeField] private int num_Spotted_Player, spottedNum;
     private Vector3 player_Last_Seen_pos;
+    [SerializeField] private Magnitization magnitizationScript;
 
 
 
@@ -102,6 +103,7 @@ public class DroneMove : MonoBehaviour
         if (playerControllerScript.prevBot == botID)
         {
             ShutdownDrone();
+            magnitizationScript.enabled = true;
             //droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
@@ -111,6 +113,7 @@ public class DroneMove : MonoBehaviour
         {
             // If the player is not in control set the tag  of the drone to "Drone"
             turnOnDrone();
+            magnitizationScript.enabled = false;
             //droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
@@ -121,10 +124,16 @@ public class DroneMove : MonoBehaviour
 
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
+            Debug.Log("Hacking");
             StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
             playerControllerScript.SetOtherBotsOff();
+            playerControllerScript.num_Spotted_Player = 0;
+
+            exclamationMark.SetActive(false);
+            questionMark.SetActive(false);
+
             botsOff = true;
 
             if (botsOff)
