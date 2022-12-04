@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 5916344584816397563}
   - component: {fileID: 233665243953071471}
   - component: {fileID: 1607761006889551871}
+  - component: {fileID: 3432287915850516010}
   m_Layer: 0
   m_Name: EletricalStorage
   m_TagString: Untagged
@@ -239,6 +240,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3432287915850516010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653809144608750867}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 228.54724, y: 260.0392, z: 129.24115}
+  m_Center: {x: -0.00024414062, y: -0.000015258789, z: -0.000045776367}
 --- !u!1 &1798412534456201167
 GameObject:
   m_ObjectHideFlags: 0
