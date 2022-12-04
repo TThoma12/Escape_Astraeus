@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 8622390310097204322}
   - component: {fileID: 63270434239839949}
   - component: {fileID: 7335193510294142435}
+  - component: {fileID: 6541911591550246117}
   m_Layer: 0
   m_Name: ControlPanel
   m_TagString: Untagged
@@ -241,6 +242,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6541911591550246117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235448155844482738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100.000046, y: 100.000015, z: 13.994788}
+  m_Center: {x: -0.00023269653, y: 0.00002670288, z: -0.00012540817}
 --- !u!1 &352542770251601000
 GameObject:
   m_ObjectHideFlags: 0

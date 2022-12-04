@@ -3026,6 +3026,7 @@ GameObject:
   - component: {fileID: 2579959084524018040}
   - component: {fileID: 7401138228781425037}
   - component: {fileID: 5888405616138790129}
+  - component: {fileID: 8097069433848916183}
   m_Layer: 0
   m_Name: EletricalBox2
   m_TagString: Untagged
@@ -3102,6 +3103,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8097069433848916183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551837197416540785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 142.20276, y: 300, z: 85.05475}
+  m_Center: {x: -0.00024414062, y: 0, z: 0.00012207031}
 --- !u!1 &6725376118420141868
 GameObject:
   m_ObjectHideFlags: 0
