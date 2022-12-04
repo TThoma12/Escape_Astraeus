@@ -21,8 +21,10 @@ public class PlayerController : MonoBehaviour
     public GameObject[] bots;
     public int  currentBot, prevBot, activeBot, num_Spotted_Player, droneMode;
     public int playerLives =3, currentLives; 
-    public bool turnOff;
+    public bool turnOff, playerDied;
     public CinemachineVirtualCamera mainCam;
+    [SerializeField] private GameObject spawn;
+    [SerializeField] private GameObject deathChecker;
    
 
     private void Awake() 
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         playerSwitcher = FindObjectOfType<PlayerSwitcher>();
         num_Spotted_Player = 0;
         currentLives = playerLives;
+        deathChecker.SetActive(false);
     }
     private void OnEnable()
     {
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
     }
     void LateUpdate() 
     {
-        
+        //LowerLives();
     }
 
     // Update is called once per frame
@@ -163,6 +166,8 @@ public class PlayerController : MonoBehaviour
         }
 
         currentBot = 0;
+
+        LowerLives();
       
       
 
@@ -188,9 +193,61 @@ public class PlayerController : MonoBehaviour
 
     public void LowerLives()
     {
-  
-            currentLives--;
+        //  if(bots[prevBot].transform.position == spawn.transform.position)
+        //  {
+        //    StartCoroutine(playerDeath());
+        //      playerDied = true;
+        //  }
 
+        if(playerDied)
+        {
+            deathChecker.SetActive(true);
+            // switch(currentLives)
+            // {
+            //     case 3:
+            //     currentLives = 2;
+            //     playerDied = false;
+            //     break;
+            //     case 2:
+            //     currentLives = 1;
+            //     playerDied = false;
+            //     break;
+            //     case 1:
+            //     currentLives = 0;
+            //     playerDied = false;
+            //     break;
+            //     default:
+            //     currentLives = 0;
+            //     playerDied = false;
+            //     break;
+                
+            // }
+           // playerDied = false;
+
+           //StartCoroutine(playerDeath());
+           //playerDeath2();
+            // Debug.Log("Player Died");
+            // currentLives--;
+            // playerDied = false;
+        }
+           
+
+    }
+
+    IEnumerator playerDeath()
+    {
+        yield return new WaitForSeconds(.001f);
+        //playerDied = true;
+        Debug.Log("Player Died");
+        playerDied = false;
+        StopCoroutine(playerDeath());
+        //playerDied = false;
+    }
+
+    void playerDeath2()
+    {
+        Debug.Log("Player Died");
+        playerDied = false;
     }
 
     void Update() 

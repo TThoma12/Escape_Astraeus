@@ -24,7 +24,7 @@ public class DroneMove : MonoBehaviour
     private PlayerController playerControllerScript;
     private PlayerInventory playerInventoryScript;
     private BehindCollider behindColliderScript;
-    public bool oneBot, playerInControl, searchMode, playerDied;
+    public bool oneBot, playerInControl, searchMode, playerAtSapwn;
     public Camera droneCam;
     public GameObject exclamationMark, questionMark;
     public int layerMaskNum;
@@ -147,7 +147,9 @@ public class DroneMove : MonoBehaviour
                 botsOff = false;
             }
 
-        }    
+        }
+
+        //PlayerDeath();    
     
     }
 
@@ -181,26 +183,28 @@ public class DroneMove : MonoBehaviour
 
     void HuntMode()
     {
-       ;
+       
 
         exclamationMark.SetActive(true);
         questionMark.SetActive(false);
         if (playerSpotted)
         {
             playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
-            playerDied = true;
-            if (playerDied == true)
-            {
-                playerDied = false;
-                playerControllerScript.LowerLives();
-                
-            }
-           
-            playerInventoryScript.ChooseShipPart();
-            
-;            
 
+            playerControllerScript.playerDied = true;
+            //playerControllerScript.playerDied = false;
+            //Debug.Log("PlayerSpotted");
+            
+            //playerInventoryScript.ChooseShipPart();
+
+            //playerControllerScript.playerDied = false;
         }
+      
+
+       
+
+
+       
     }
 
     void defaultMode()
@@ -332,6 +336,16 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
+    }
+
+    void PlayerDeath()
+    {
+         if(playerAtSapwn)
+        {
+           
+            playerControllerScript.playerDied = true;
+             playerAtSapwn = false;
+        }
     }
 
     void DroneFollowPath()
