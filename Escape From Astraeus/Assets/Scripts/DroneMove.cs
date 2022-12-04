@@ -24,7 +24,7 @@ public class DroneMove : MonoBehaviour
     private PlayerController playerControllerScript;
     private PlayerInventory playerInventoryScript;
     private BehindCollider behindColliderScript;
-    public bool oneBot, playerInControl, searchMode;
+    public bool oneBot, playerInControl, searchMode, playerDied;
     public Camera droneCam;
     public GameObject exclamationMark, questionMark;
     public int layerMaskNum;
@@ -181,12 +181,21 @@ public class DroneMove : MonoBehaviour
 
     void HuntMode()
     {
+       ;
+
         exclamationMark.SetActive(true);
         questionMark.SetActive(false);
         if (playerSpotted)
         {
             playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
-            playerControllerScript.playerLives--;
+            playerDied = true;
+            if (playerDied == true)
+            {
+                playerDied = false;
+                playerControllerScript.LowerLives();
+                
+            }
+           
             playerInventoryScript.ChooseShipPart();
             
 ;            

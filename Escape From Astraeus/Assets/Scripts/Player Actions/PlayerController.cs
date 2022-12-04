@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool[] botsActivated;
     public GameObject[] bots;
     public int  currentBot, prevBot, activeBot, num_Spotted_Player, droneMode;
-    public int playerLives =3; 
+    public int playerLives =3, currentLives; 
     public bool turnOff;
     public CinemachineVirtualCamera mainCam;
    
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         playerControls = new PlayerInput();
         playerSwitcher = FindObjectOfType<PlayerSwitcher>();
         num_Spotted_Player = 0;
+        currentLives = playerLives;
     }
     private void OnEnable()
     {
@@ -185,16 +186,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void LowerLives(bool added)
+    public void LowerLives()
     {
-       if (!added)
-       {
-            added= true;
-            playerLives--;
-            
-       }
-         
-       
+  
+            currentLives--;
+
     }
 
     void Update() 
