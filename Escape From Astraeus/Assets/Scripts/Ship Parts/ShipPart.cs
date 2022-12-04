@@ -11,6 +11,7 @@ public class ShipPart : MonoBehaviour
     private PlayerInventory playerInventory;
     void Start()
     {
+        playerController = GameObject.Find("PlayerController");
         playerInventory = playerController.GetComponent<PlayerInventory>();
     }
 

@@ -20,6 +20,7 @@ public class DroneMove : MonoBehaviour
     public GameObject playerSpawn;
     public GameObject playerController;
     public GameObject behindCollider;
+    [SerializeField]private GameObject droneLight;
     private PlayerController playerControllerScript;
     private BehindCollider behindColliderScript;
     public bool oneBot, playerInControl, searchMode;
@@ -104,6 +105,7 @@ public class DroneMove : MonoBehaviour
         {
             ShutdownDrone();
             magnitizationScript.enabled = true;
+            droneLight.SetActive(true);
             //droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
@@ -132,8 +134,8 @@ public class DroneMove : MonoBehaviour
             playerControllerScript.num_Spotted_Player = 0;
 
             exclamationMark.SetActive(false);
-            questionMark.SetActive(false);
-
+        questionMark.SetActive(false);
+        
             botsOff = true;
 
             if (botsOff)
@@ -272,7 +274,7 @@ public class DroneMove : MonoBehaviour
 
     IEnumerator turnDroneOn()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         On = true;
         droneSight.enabled = true;
         playerInControl = false;
