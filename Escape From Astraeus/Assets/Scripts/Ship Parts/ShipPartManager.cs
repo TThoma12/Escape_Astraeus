@@ -48,5 +48,11 @@ public class ShipPartManager : MonoBehaviour
   
     }
 
+    public void SpawnSpecificPart(int part)
+    {
+        RandomSpawnPos();
+        Instantiate(shiparts[part], partSpawnLocations[k].transform.position, Quaternion.identity);
+    }
+
 
 }

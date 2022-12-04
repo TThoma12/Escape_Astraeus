@@ -22,6 +22,7 @@ public class DroneMove : MonoBehaviour
     public GameObject behindCollider;
     [SerializeField]private GameObject droneLight;
     private PlayerController playerControllerScript;
+    private PlayerInventory playerInventoryScript;
     private BehindCollider behindColliderScript;
     public bool oneBot, playerInControl, searchMode;
     public Camera droneCam;
@@ -41,6 +42,7 @@ public class DroneMove : MonoBehaviour
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        playerInventoryScript = playerController.GetComponent<PlayerInventory>();
         behindColliderScript = behindCollider.GetComponent<BehindCollider>();
         playerInControl = false;
         spottedNum = 0;
@@ -105,7 +107,7 @@ public class DroneMove : MonoBehaviour
         {
             ShutdownDrone();
             magnitizationScript.enabled = true;
-            droneLight.SetActive(true);
+            droneLight.SetActive(false);
             //droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
@@ -116,6 +118,7 @@ public class DroneMove : MonoBehaviour
             // If the player is not in control set the tag  of the drone to "Drone"
             turnOnDrone();
             magnitizationScript.enabled = false;
+            droneLight.SetActive(true);
             //droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
@@ -183,6 +186,10 @@ public class DroneMove : MonoBehaviour
         if (playerSpotted)
         {
             playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+            playerControllerScript.playerLives--;
+            playerInventoryScript.ChooseShipPart();
+;            
+
         }
     }
 

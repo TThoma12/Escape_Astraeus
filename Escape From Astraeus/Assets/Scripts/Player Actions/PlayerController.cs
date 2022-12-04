@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     private DroneSight droneSightScript;
     public bool[] botsActivated;
     public GameObject[] bots;
-    public int  currentBot, prevBot, activeBot, num_Spotted_Player;
+    public int  currentBot, prevBot, activeBot, num_Spotted_Player, droneMode;
+    public int playerLives =3; 
     public bool turnOff;
     public CinemachineVirtualCamera mainCam;
    
