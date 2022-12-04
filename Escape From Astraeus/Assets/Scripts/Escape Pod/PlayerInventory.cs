@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField]private int k,i;
     [SerializeField]private GameObject ShipPartManager;
     [SerializeField]private ShipPartManager shipPartManagerScript;
-    [SerializeField]private bool partChosen, playerHasItem;
+    [SerializeField]private bool partChosen = false, playerHasItem;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,22 +18,23 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+         CheckPlayerInv();
     }
 
     public void ChooseShipPart()
     {
-        CheckPlayerInv();
+      
+
         if (playerHasItem)
         {
-             partChosen = false;
-       RandomShipPart();
-        if(Player_Ship_Parts[k] && !partChosen)
-        {
-            Player_Ship_Parts[k] = false;
-            shipPartManagerScript.SpawnSpecificPart(k);
-            partChosen = true;
-        }
+                //partChosen = false;
+                RandomShipPart();
+            if(Player_Ship_Parts[k] && !partChosen)
+            {
+                Player_Ship_Parts[k] = false;
+                shipPartManagerScript.SpawnSpecificPart(k);
+                partChosen = true;
+            }
         }
        
     }
@@ -41,16 +42,26 @@ public class PlayerInventory : MonoBehaviour
     void RandomShipPart()
     {
          k = Random.Range(0,Player_Ship_Parts.Length);
+         if(!Player_Ship_Parts[k])
+         {
+            RandomShipPart();
+         }
     }
 
     void CheckPlayerInv()
     {
-        for (i=0; i<Player_Ship_Parts.Length; i++)
-        {
-            if(Player_Ship_Parts[i])
+      
+            if(Player_Ship_Parts[0] ||Player_Ship_Parts[1] ||Player_Ship_Parts[2] ||Player_Ship_Parts[3])
             {
                 playerHasItem = true;
+                partChosen = false;
             }
-        }
+            else
+            {
+                playerHasItem = false;
+            }
+
     }
+
+    
 }

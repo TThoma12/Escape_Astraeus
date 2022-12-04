@@ -185,6 +185,18 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void LowerLives(bool added)
+    {
+       if (!added)
+       {
+            added= true;
+            playerLives--;
+            
+       }
+         
+       
+    }
+
     void Update() 
     {
         

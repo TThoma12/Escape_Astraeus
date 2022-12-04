@@ -188,6 +188,7 @@ public class DroneMove : MonoBehaviour
             playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
             playerControllerScript.playerLives--;
             playerInventoryScript.ChooseShipPart();
+            
 ;            
 
         }
