@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 5044861023830707884}
   - component: {fileID: 1959065707953171292}
   - component: {fileID: 6300656585101934075}
+  - component: {fileID: 6389187802943559053}
   m_Layer: 0
   m_Name: WallEletrical
   m_TagString: Untagged
@@ -835,6 +836,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6389187802943559053
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865276293380125941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 96.282715, y: 183.0729, z: 27.414185}
+  m_Center: {x: -0.00008773804, y: -0.000022888184, z: 0.0007343292}
 --- !u!1 &2879482058327006338
 GameObject:
   m_ObjectHideFlags: 0
