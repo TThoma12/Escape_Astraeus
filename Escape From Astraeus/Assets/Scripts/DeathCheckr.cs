@@ -6,10 +6,12 @@ public class DeathCheckr : MonoBehaviour
 {
     public GameObject playerController;
     private PlayerController playerControllerScript;
+    private PlayerInventory playerInventoryScript;
     // Start is called before the first frame update
     void Start()
     {
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        playerInventoryScript = playerController.GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -22,11 +24,13 @@ public class DeathCheckr : MonoBehaviour
     {
         if(collider.gameObject.tag == "Player")
         {
-            if(playerControllerScript.currentLives < 0)
+            if(playerControllerScript.currentLives >= 0)
             {
                 playerControllerScript.currentLives--;
-            }
+                //playerInventoryScript.ChooseShipPart();
+                playerInventoryScript.TurnTestOne();
             
+             }
         }
     }
 }

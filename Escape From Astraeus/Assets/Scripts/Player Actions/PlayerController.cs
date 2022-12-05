@@ -168,6 +168,7 @@ public class PlayerController : MonoBehaviour
         currentBot = 0;
 
         LowerLives();
+        playerDeath2();
       
       
 
@@ -246,8 +247,11 @@ public class PlayerController : MonoBehaviour
 
     void playerDeath2()
     {
-        Debug.Log("Player Died");
-        playerDied = false;
+        if(currentLives == 0)
+        {
+            Debug.Log("Game Over");
+        }
+        
     }
 
     void Update() 

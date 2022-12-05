@@ -7,8 +7,8 @@ public class ShipPartManager : MonoBehaviour
     [SerializeField]private GameObject[] shiparts;
     [SerializeField]private GameObject[] partSpawnLocations;
     [SerializeField]private bool[] spawnLocationActive;
-    [SerializeField]private int k,i;
-     [SerializeField]private bool randomizedSpawn;
+    [SerializeField]private int k,i,p;
+     [SerializeField]private bool randomizedSpawn ,locationFound;
 
     // Start is called before the first frame update
     void Start()
@@ -28,21 +28,25 @@ public class ShipPartManager : MonoBehaviour
          for (i = 0; i<shiparts.Length; i++)
        {
         RandomSpawnPos();
-        Instantiate(shiparts[i], partSpawnLocations[k].transform.position, Quaternion.identity);
+        Instantiate(shiparts[i], partSpawnLocations[p].transform.position, Quaternion.identity);
+        locationFound = true;
        }
     }
     void RandomSpawnPos()
     {
-        
-        k = Random.Range(0, partSpawnLocations.Length);
-        if (spawnLocationActive[k])
+        if (locationFound)
         {
-            RandomSpawnPos();
+             k = Random.Range(0, partSpawnLocations.Length);
+            if (!spawnLocationActive[k])
+            {
+                 spawnLocationActive[k] = true;
+                 locationFound = false;
+                 p = k;
+            }
+           
+          
         }
-        else
-        {
-            spawnLocationActive[k] = true;
-        }
+       
         
             
   
@@ -51,7 +55,7 @@ public class ShipPartManager : MonoBehaviour
     public void SpawnSpecificPart(int part)
     {
         RandomSpawnPos();
-        Instantiate(shiparts[part], partSpawnLocations[k].transform.position, Quaternion.identity);
+        Instantiate(shiparts[part], partSpawnLocations[p].transform.position, Quaternion.identity);
     }
 
 

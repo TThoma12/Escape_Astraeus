@@ -137,7 +137,7 @@ public class DroneMove : MonoBehaviour
             playerControllerScript.num_Spotted_Player = 0;
 
             exclamationMark.SetActive(false);
-        questionMark.SetActive(false);
+            questionMark.SetActive(false);
         
             botsOff = true;
 
