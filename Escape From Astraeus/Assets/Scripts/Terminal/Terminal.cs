@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class Terminal : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject terminalUi;
+    //public GameObject terminalUi;
     public GameObject drone;
     private DroneMove droneMove;
     private DroneSight droneSight;
     public GameObject playerController;
     private PlayerController playerControllerScript;
     private bool playerOnTerminal, terminalOn;
-    public GameObject terminalTextOBJ;
-    public TMPro.TextMeshProUGUI terminalText;
+    //public GameObject terminalTextOBJ;
+    //public TMPro.TextMeshProUGUI terminalText;
+    [SerializeField] private GameObject [] onAndOff;
     
     void Start()    
     {
@@ -23,9 +24,9 @@ public class Terminal : MonoBehaviour
         droneSight = drone.GetComponent<DroneSight>();
        
        
-        terminalUi.SetActive(false);
+        //terminalUi.SetActive(false);
         terminalOn = true;
-        terminalText.color = new Color(0.2705883f,1,4365277,1);
+        //terminalText.color = new Color(0.2705883f,1,4365277,1);
     }
 
     // Update is called once per frame
@@ -43,8 +44,8 @@ public class Terminal : MonoBehaviour
 
         if (!terminalOn)
         {
-            terminalText.text = "Access Denied";
-            terminalText.color = new Color(1,0.2688679f,0.2688679f,1);
+            //terminalText.text = "Access Denied";
+            //terminalText.color = new Color(1,0.2688679f,0.2688679f,1);
 
            
         }
@@ -53,19 +54,30 @@ public class Terminal : MonoBehaviour
     void OnCollisionEnter(Collision collision) 
     {
 
-        if (collision.gameObject.tag == "Player")
+       
+
+    }
+
+    private void OnTriggerEnter(Collider collider) 
+    {
+         if (collider.gameObject.tag == "Player")
         {
-            terminalUi.SetActive(true);
+            //terminalUi.SetActive(true);
             Debug.Log("Close");
             playerOnTerminal = true;
+            onAndOff[0].SetActive(true);
         }
+    }
 
+    private void OnTriggerExit(Collider collider) 
+    {
+         playerOnTerminal = false;
     }
 
     void OnCollisionExit(Collision collision) 
     {
-        terminalUi.SetActive(false);
-        playerOnTerminal = false;
+        //terminalUi.SetActive(false);
+       
     }
 
     void ShutDownDrone()
@@ -75,8 +87,10 @@ public class Terminal : MonoBehaviour
 
     IEnumerator DroneShutDown()
     {
-        terminalText.text = "Hacking Drone...";
-        terminalText.color = new Color(0.2705883f,1,0.4365277f,1);
+        // terminalText.text = "Hacking Drone...";
+        // terminalText.color = new Color(0.2705883f,1,0.4365277f,1);
+        onAndOff[1].SetActive(true);
+        onAndOff[0].SetActive(false);
         yield return new WaitForSeconds(5f);
         
         droneMove.On = false;
@@ -89,7 +103,7 @@ public class Terminal : MonoBehaviour
 
     IEnumerator TurnDroneOn()
     {
-        terminalText.text = "Drone Rebooting...";
+        //terminalText.text = "Drone Rebooting...";
         yield return new WaitForSeconds(8f);
         droneMove.On = true;
         droneSight.enabled = true;
