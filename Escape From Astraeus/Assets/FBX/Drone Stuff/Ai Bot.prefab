@@ -1203,7 +1203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsBehind: 0
   hackable: 0
-  takeOverText: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!1 &8538506296833746981
 GameObject:
@@ -1375,6 +1374,7 @@ GameObject:
   - component: {fileID: 8136331143592874359}
   - component: {fileID: 8136331143592874376}
   - component: {fileID: 8136331143592874377}
+  - component: {fileID: 4690009163682046725}
   - component: {fileID: 2003543834606431318}
   m_Layer: 0
   m_Name: Ai Bot
@@ -1529,6 +1529,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currentPP: 0
   speed: 3
   rSpeed: 5
   randomPP: 0
@@ -1551,6 +1552,30 @@ MonoBehaviour:
   layerMaskNum: 0
   num_Spotted_Player: 0
   spottedNum: 0
+  magnitizationScript: {fileID: 0}
+--- !u!114 &4690009163682046725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947359162654637692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527bd288ab5063c498b9748cfc3339e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayStartPoint: {fileID: 0}
+  rayEndPoint: {fileID: 0}
+  hitDistance: 0
+  playerController: {fileID: 0}
+  crateInView: 0
+  holdingCrate: 0
+  moveDistanceZ: 0
+  moveDistanceX: 0
+  reloading: 0
+  on: 0
+  moveDirection: 
 --- !u!54 &2003543834606431318
 Rigidbody:
   m_ObjectHideFlags: 0

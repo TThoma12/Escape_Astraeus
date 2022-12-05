@@ -20,14 +20,17 @@ public class DroneMove : MonoBehaviour
     public GameObject playerSpawn;
     public GameObject playerController;
     public GameObject behindCollider;
+    [SerializeField]private GameObject droneLight;
     private PlayerController playerControllerScript;
+    private PlayerInventory playerInventoryScript;
     private BehindCollider behindColliderScript;
-    public bool oneBot, playerInControl, searchMode;
+    public bool oneBot, playerInControl, searchMode, playerAtSapwn;
     public Camera droneCam;
     public GameObject exclamationMark, questionMark;
     public int layerMaskNum;
     [SerializeField] private int num_Spotted_Player, spottedNum;
     private Vector3 player_Last_Seen_pos;
+    [SerializeField] private Magnitization magnitizationScript;
 
 
 
@@ -39,6 +42,7 @@ public class DroneMove : MonoBehaviour
         drone = GetComponent<NavMeshAgent>();
         droneSight = GetComponent<DroneSight>();
         playerControllerScript = playerController.GetComponent<PlayerController>();
+        playerInventoryScript = playerController.GetComponent<PlayerInventory>();
         behindColliderScript = behindCollider.GetComponent<BehindCollider>();
         playerInControl = false;
         spottedNum = 0;
@@ -102,6 +106,8 @@ public class DroneMove : MonoBehaviour
         if (playerControllerScript.prevBot == botID)
         {
             ShutdownDrone();
+            magnitizationScript.enabled = true;
+            droneLight.SetActive(false);
             //droneCam.enabled = true;
             tag = "Player";
             gameObject.layer = 6;
@@ -111,6 +117,8 @@ public class DroneMove : MonoBehaviour
         {
             // If the player is not in control set the tag  of the drone to "Drone"
             turnOnDrone();
+            magnitizationScript.enabled = false;
+            droneLight.SetActive(true);
             //droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
@@ -121,10 +129,16 @@ public class DroneMove : MonoBehaviour
 
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
+            Debug.Log("Hacking");
             StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
             playerControllerScript.SetOtherBotsOff();
+            playerControllerScript.num_Spotted_Player = 0;
+
+            exclamationMark.SetActive(false);
+            questionMark.SetActive(false);
+        
             botsOff = true;
 
             if (botsOff)
@@ -133,7 +147,9 @@ public class DroneMove : MonoBehaviour
                 botsOff = false;
             }
 
-        }    
+        }
+
+        //PlayerDeath();    
     
     }
 
@@ -167,12 +183,28 @@ public class DroneMove : MonoBehaviour
 
     void HuntMode()
     {
+       
+
         exclamationMark.SetActive(true);
         questionMark.SetActive(false);
         if (playerSpotted)
         {
             playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+
+            playerControllerScript.playerDied = true;
+            //playerControllerScript.playerDied = false;
+            //Debug.Log("PlayerSpotted");
+            
+            //playerInventoryScript.ChooseShipPart();
+
+            //playerControllerScript.playerDied = false;
         }
+      
+
+       
+
+
+       
     }
 
     void defaultMode()
@@ -263,7 +295,7 @@ public class DroneMove : MonoBehaviour
 
     IEnumerator turnDroneOn()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         On = true;
         droneSight.enabled = true;
         playerInControl = false;
@@ -304,6 +336,16 @@ public class DroneMove : MonoBehaviour
                randomPP = Random.Range(0,patrolPoints.Length);
                currentPP = randomPP;
           }  
+    }
+
+    void PlayerDeath()
+    {
+         if(playerAtSapwn)
+        {
+           
+            playerControllerScript.playerDied = true;
+             playerAtSapwn = false;
+        }
     }
 
     void DroneFollowPath()

@@ -13,7 +13,7 @@ public class Magnitization : MonoBehaviour
     private PlayerController playerControllerScript;
     [SerializeField]private bool crateInView, holdingCrate;
     [SerializeField]private int moveDistanceZ, moveDistanceX;
-    public NavMeshSurface navMesh;
+    //public NavMeshSurface navMesh;
     [SerializeField]private bool reloading, on;
      [SerializeField]private string moveDirection;
 
