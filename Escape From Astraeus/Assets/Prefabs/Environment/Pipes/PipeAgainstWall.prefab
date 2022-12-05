@@ -41,6 +41,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1260747144476293950}
     m_Modifications:
+    - target: {fileID: 7275445002100996796, guid: 55be74f855cfe2d4f9296f04345b757a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e821a6fcf35366f4498eb66c1c8229a7, type: 2}
     - target: {fileID: 8411807601276289491, guid: 55be74f855cfe2d4f9296f04345b757a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -151,6 +155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Norm Pipe 2 End
       objectReference: {fileID: 0}
+    - target: {fileID: 8578499582544558594, guid: e8dc8790065e2b949a1d06c8d1ff6a69, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e821a6fcf35366f4498eb66c1c8229a7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8dc8790065e2b949a1d06c8d1ff6a69, type: 3}
 --- !u!4 &2344210898449799240 stripped
@@ -165,6 +173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1260747144476293950}
     m_Modifications:
+    - target: {fileID: 7275445002100996796, guid: 55be74f855cfe2d4f9296f04345b757a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e821a6fcf35366f4498eb66c1c8229a7, type: 2}
     - target: {fileID: 8411807601276289491, guid: 55be74f855cfe2d4f9296f04345b757a, type: 3}
       propertyPath: m_RootOrder
       value: 1
