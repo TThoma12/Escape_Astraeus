@@ -20,7 +20,7 @@ public class DroneMove : MonoBehaviour
     public GameObject playerSpawn;
     public GameObject playerController;
     public GameObject behindCollider;
-    [SerializeField]private GameObject droneLight;
+    [SerializeField]public GameObject droneLight;
     private PlayerController playerControllerScript;
     private PlayerInventory playerInventoryScript;
     private BehindCollider behindColliderScript;
@@ -247,13 +247,14 @@ public class DroneMove : MonoBehaviour
         StartCoroutine(DroneRushPlayer(player_Last_Seen_pos));
     }
 
-    void ShutdownDrone()
+    public void ShutdownDrone()
     {
         On = false;
         droneSight.enabled = false;
+        //Debug.Log("ShutdownDroneScript");
     }
 
-    void turnOnDrone()
+    public void turnOnDrone()
     {
        StartCoroutine(turnDroneOn());
     }
