@@ -12,7 +12,7 @@ public class Terminal : MonoBehaviour
     private DroneSight droneSight;
     public GameObject playerController;
     private PlayerController playerControllerScript;
-    private bool playerOnTerminal, terminalOn;
+    [SerializeField]private bool playerOnTerminal, terminalOn;
     //public GameObject terminalTextOBJ;
     //public TMPro.TextMeshProUGUI terminalText;
     [SerializeField] private GameObject [] onAndOff;
@@ -89,11 +89,15 @@ public class Terminal : MonoBehaviour
     {
         // terminalText.text = "Hacking Drone...";
         // terminalText.color = new Color(0.2705883f,1,0.4365277f,1);
+        Debug.Log("Shutting down drone");
         onAndOff[1].SetActive(true);
         onAndOff[0].SetActive(false);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         
-        droneMove.On = false;
+        //droneMove.On = false;
+        droneMove.droneLight.SetActive(false);
+        droneMove.enabled = false;
+        //droneMove.ShutdownDrone();
         droneSight.enabled = false;
 
        
@@ -104,9 +108,12 @@ public class Terminal : MonoBehaviour
     IEnumerator TurnDroneOn()
     {
         //terminalText.text = "Drone Rebooting...";
-        yield return new WaitForSeconds(8f);
-        droneMove.On = true;
+        yield return new WaitForSeconds(10f);
+        //droneMove.On = true;
+        //droneMove.turnOnDrone();
+        droneMove.droneLight.SetActive(true);
         droneSight.enabled = true;
+        droneMove.enabled = true;
         terminalOn = false;
 
         
