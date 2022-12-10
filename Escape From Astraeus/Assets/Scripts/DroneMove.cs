@@ -195,7 +195,8 @@ public class DroneMove : MonoBehaviour
         questionMark.SetActive(false);
         if (playerSpotted)
         {
-            playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+            //playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+            playerControllerScript.bots[playerControllerScript.prevBot].GetComponent<NavMeshAgent>().Warp(playerSpawn.transform.position);
 
             playerControllerScript.playerDied = true;
             //playerControllerScript.playerDied = false;
