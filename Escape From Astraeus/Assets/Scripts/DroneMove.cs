@@ -32,6 +32,7 @@ public class DroneMove : MonoBehaviour
     private Vector3 player_Last_Seen_pos;
     [SerializeField] private Magnitization magnitizationScript;
     [SerializeField] private AudioSource BotScanningSFX;
+    [SerializeField] private AudioSource MagniSFX;
 
 
 
@@ -134,6 +135,7 @@ public class DroneMove : MonoBehaviour
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
             Debug.Log("Hacking");
+            MagniSFX.Play();
             StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
