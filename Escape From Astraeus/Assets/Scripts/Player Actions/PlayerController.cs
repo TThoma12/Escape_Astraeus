@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public CinemachineVirtualCamera mainCam;
     [SerializeField] private GameObject spawn;
     [SerializeField] private GameObject deathChecker;
+    [SerializeField] private AudioSource AlarmStateSFX;
+    
    
 
     private void Awake() 
@@ -411,7 +413,7 @@ public class PlayerController : MonoBehaviour
            
         }
 
-            
+           
         }
 
         currentBot = 0;
@@ -476,11 +478,11 @@ public class PlayerController : MonoBehaviour
     void Update() 
     {
         
-    //    if (turnOff)
-    //    {
-    //         StartCoroutine(TurnOffAllBots());
-           
-    //    }
+         if (num_Spotted_Player == 2)
+            {
+                Debug.Log("Playing SFX");
+                AlarmStateSFX.Play();
+            }
         
     }
 

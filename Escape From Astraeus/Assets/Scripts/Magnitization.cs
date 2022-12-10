@@ -15,7 +15,8 @@ public class Magnitization : MonoBehaviour
     [SerializeField]private int moveDistanceZ, moveDistanceX;
     //public NavMeshSurface navMesh;
     [SerializeField]private bool reloading, on;
-     [SerializeField]private string moveDirection;
+    [SerializeField]private string moveDirection;
+    [SerializeField]private AudioSource MagniSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -66,10 +67,12 @@ public class Magnitization : MonoBehaviour
                     case "Z":
                         StartCoroutine(ReloadMagni());
                         hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y , hit.transform.position.z + moveDistanceZ * Time.deltaTime);
+                        MagniSFX.Play();
                     break;
                     case "X":
                         StartCoroutine(ReloadMagni());
                         hit.transform.position = new Vector3(hit.transform.position.x + moveDistanceX * Time.deltaTime, hit.transform.position.y , hit.transform.position.z);
+                        MagniSFX.Play();
                     break;
                 }
                 

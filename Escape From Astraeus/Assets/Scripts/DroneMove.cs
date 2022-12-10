@@ -31,6 +31,7 @@ public class DroneMove : MonoBehaviour
     [SerializeField] private int num_Spotted_Player, spottedNum;
     private Vector3 player_Last_Seen_pos;
     [SerializeField] private Magnitization magnitizationScript;
+    [SerializeField] private AudioSource BotScanningSFX;
 
 
 
@@ -46,6 +47,7 @@ public class DroneMove : MonoBehaviour
         behindColliderScript = behindCollider.GetComponent<BehindCollider>();
         playerInControl = false;
         spottedNum = 0;
+        BotScanningSFX.Play();
         
     }
 
@@ -98,6 +100,7 @@ public class DroneMove : MonoBehaviour
         {
             drone.destination = this.transform.position;
             drone.isStopped = true;
+            //BotScanningSFX.Pause();
             //StartCoroutine(turnDroneRushOff());
             
         }
@@ -122,6 +125,7 @@ public class DroneMove : MonoBehaviour
             //droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
+             //BotScanningSFX.Play();
             
         }
 
@@ -251,6 +255,7 @@ public class DroneMove : MonoBehaviour
     {
         On = false;
         droneSight.enabled = false;
+        //BotScanningSFX.Pause();
         //Debug.Log("ShutdownDroneScript");
     }
 
@@ -300,6 +305,7 @@ public class DroneMove : MonoBehaviour
         On = true;
         droneSight.enabled = true;
         playerInControl = false;
+        //BotScanningSFX.Play();
         StopCoroutine(turnDroneOn());
     }
 
