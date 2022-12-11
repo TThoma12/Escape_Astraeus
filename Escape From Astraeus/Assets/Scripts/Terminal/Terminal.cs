@@ -16,6 +16,7 @@ public class Terminal : MonoBehaviour
     //public GameObject terminalTextOBJ;
     //public TMPro.TextMeshProUGUI terminalText;
     [SerializeField] private GameObject [] onAndOff;
+    [SerializeField] private AudioSource terminalActivatedSFX;
     
     void Start()    
     {
@@ -34,9 +35,10 @@ public class Terminal : MonoBehaviour
     {
         if (playerControllerScript.Interact.triggered && terminalOn)
         {
-            Debug.Log("E");
+            //Debug.Log("E");
             if (playerOnTerminal)
             {
+                terminalActivatedSFX.Play();
                 ShutDownDrone();
             }
             

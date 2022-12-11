@@ -32,7 +32,8 @@ public class DroneMove : MonoBehaviour
     private Vector3 player_Last_Seen_pos;
     [SerializeField] private Magnitization magnitizationScript;
     [SerializeField] private AudioSource BotScanningSFX;
-    [SerializeField] private AudioSource MagniSFX;
+    [SerializeField] private AudioSource SwapSFX;
+    [SerializeField] private AudioSource DroneShutDownSFX;
 
 
 
@@ -116,6 +117,8 @@ public class DroneMove : MonoBehaviour
             tag = "Player";
             gameObject.layer = 6;
             //droneSight.targetMask = 0;
+            exclamationMark.SetActive(false);
+            questionMark.SetActive(false);
         }
         else
         {
@@ -135,7 +138,7 @@ public class DroneMove : MonoBehaviour
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
             Debug.Log("Hacking");
-            MagniSFX.Play();
+            SwapSFX.Play();
             StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
@@ -258,6 +261,7 @@ public class DroneMove : MonoBehaviour
     {
         On = false;
         droneSight.enabled = false;
+        DroneShutDownSFX.Play();
         //BotScanningSFX.Pause();
         //Debug.Log("ShutdownDroneScript");
     }

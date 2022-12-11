@@ -9,6 +9,8 @@ public class ShipPart : MonoBehaviour
     public int shipPart_ID;
     public GameObject playerController;
     private PlayerInventory playerInventory;
+    [SerializeField] AudioSource LocaIndicatorSFX;
+
     void Start()
     {
         playerController = GameObject.Find("PlayerController");
