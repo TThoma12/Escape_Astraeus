@@ -17,6 +17,7 @@ public class Terminal : MonoBehaviour
     //public TMPro.TextMeshProUGUI terminalText;
     [SerializeField] private GameObject [] onAndOff;
     [SerializeField] private AudioSource terminalActivatedSFX;
+    [SerializeField] private AudioSource shutdownDroneSFX;
     
     void Start()    
     {
@@ -89,6 +90,7 @@ public class Terminal : MonoBehaviour
 
     IEnumerator DroneShutDown()
     {
+        
         // terminalText.text = "Hacking Drone...";
         // terminalText.color = new Color(0.2705883f,1,0.4365277f,1);
         Debug.Log("Shutting down drone");
@@ -101,7 +103,7 @@ public class Terminal : MonoBehaviour
         droneMove.enabled = false;
         //droneMove.ShutdownDrone();
         droneSight.enabled = false;
-
+        shutdownDroneSFX.Play();
        
         StartCoroutine(TurnDroneOn());
         //StopAllCoroutines();

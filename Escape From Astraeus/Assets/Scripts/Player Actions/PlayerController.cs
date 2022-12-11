@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject spawn;
     [SerializeField] private GameObject deathChecker;
     [SerializeField] private AudioSource AlarmStateSFX;
+    [SerializeField] private AudioSource DroneMovingSFX;
     
    
 
@@ -483,7 +484,14 @@ public class PlayerController : MonoBehaviour
     void Update() 
     {
         
-       
+       if(move.triggered)
+       {
+        //DroneMovingSFX.PlayOneShot(DroneMovingSFX, 1);
+       }
+       else
+       {
+        DroneMovingSFX.mute = true;
+       }
         
     }
 
