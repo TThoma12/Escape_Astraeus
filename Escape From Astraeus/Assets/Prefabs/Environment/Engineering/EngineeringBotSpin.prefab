@@ -168,9 +168,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4386013302984122305, guid: 28bacb835e320e248922693a4c570d15, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28bacb835e320e248922693a4c570d15, type: 3}
       propertyPath: m_Name
       value: FactoryTopCombnined
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024293536651871151, guid: 28bacb835e320e248922693a4c570d15, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28bacb835e320e248922693a4c570d15, type: 3}
