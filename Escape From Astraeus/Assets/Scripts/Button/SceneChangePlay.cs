@@ -8,6 +8,7 @@ public class SceneChangePlay : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject button;
     [SerializeField] private string sceneName;
+     [SerializeField] GameObject[] tuturialBackgrounds;
     void Start()
     {
         StartCoroutine(LoadingScreen());
@@ -27,6 +28,8 @@ public class SceneChangePlay : MonoBehaviour
     IEnumerator LoadingScreen()
     {
         yield return new WaitForSeconds(19f);
+        tuturialBackgrounds[0].SetActive(true);
+        tuturialBackgrounds[1].SetActive(true);
         button.SetActive(true);
         StopCoroutine(LoadingScreen());
 
