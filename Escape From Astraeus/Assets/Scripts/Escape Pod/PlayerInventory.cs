@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField]private GameObject ShipPartManager;
     [SerializeField]private ShipPartManager shipPartManagerScript;
     [SerializeField]private bool partChosen = false, playerHasItem, test;
+    [SerializeField] AudioSource pickSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +96,11 @@ public class PlayerInventory : MonoBehaviour
     }
     void GeneratePart()
     {}
+
+    public void playSFX()
+    {
+        pickSFX.Play();
+    }
 
     
 }
