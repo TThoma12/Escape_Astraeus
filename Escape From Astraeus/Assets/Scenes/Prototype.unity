@@ -2053,6 +2053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPart_ID: 1
   playerController: {fileID: 37835153}
+  LocaIndicatorSFX: {fileID: 0}
 --- !u!54 &267323682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2722,6 +2723,9 @@ MonoBehaviour:
   num_Spotted_Player: 0
   spottedNum: 0
   magnitizationScript: {fileID: 0}
+  BotScanningSFX: {fileID: 0}
+  SwapSFX: {fileID: 0}
+  DroneShutDownSFX: {fileID: 0}
 --- !u!195 &301039391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9972,6 +9976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPart_ID: 0
   playerController: {fileID: 37835153}
+  LocaIndicatorSFX: {fileID: 0}
 --- !u!1001 &1273402580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19420,6 +19425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3415740167371932147, guid: eec46cbd5192901458141569adbb49e6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3415740167371932150, guid: eec46cbd5192901458141569adbb49e6, type: 3}
       propertyPath: m_Name
       value: Drone Main Cam
@@ -19894,6 +19903,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8616472005872385199, guid: e3bbc44f682c38e45a31e5f14e3fc9de, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3bbc44f682c38e45a31e5f14e3fc9de, type: 3}
 --- !u!1001 &7449540001647594097
@@ -20025,10 +20038,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1735184792}
     - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
-      propertyPath: bots.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
       propertyPath: bots.Array.data[0]
       value: 
       objectReference: {fileID: 266020703}
@@ -20044,22 +20053,6 @@ PrefabInstance:
       propertyPath: bots.Array.data[3]
       value: 
       objectReference: {fileID: 1175523815}
-    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
-      propertyPath: bots.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
-      propertyPath: botsActivated.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
-      propertyPath: botsActivated.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
-      propertyPath: botsActivated.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7999793384371106958, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
       propertyPath: m_Name
       value: PlayerController
