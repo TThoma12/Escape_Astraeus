@@ -31,6 +31,9 @@ public class DroneMove : MonoBehaviour
     [SerializeField] private int num_Spotted_Player, spottedNum;
     private Vector3 player_Last_Seen_pos;
     [SerializeField] private Magnitization magnitizationScript;
+    [SerializeField] private AudioSource BotScanningSFX;
+    [SerializeField] private AudioSource SwapSFX;
+    [SerializeField] private AudioSource DroneShutDownSFX;
 
 
 
@@ -46,6 +49,7 @@ public class DroneMove : MonoBehaviour
         behindColliderScript = behindCollider.GetComponent<BehindCollider>();
         playerInControl = false;
         spottedNum = 0;
+        BotScanningSFX.Play();
         
     }
 
@@ -98,6 +102,7 @@ public class DroneMove : MonoBehaviour
         {
             drone.destination = this.transform.position;
             drone.isStopped = true;
+            //BotScanningSFX.Pause();
             //StartCoroutine(turnDroneRushOff());
             
         }
@@ -112,6 +117,8 @@ public class DroneMove : MonoBehaviour
             tag = "Player";
             gameObject.layer = 6;
             //droneSight.targetMask = 0;
+            exclamationMark.SetActive(false);
+            questionMark.SetActive(false);
         }
         else
         {
@@ -122,6 +129,7 @@ public class DroneMove : MonoBehaviour
             //droneCam.enabled = false;
             tag = "Drone";
              gameObject.layer = 0;
+             //BotScanningSFX.Play();
             
         }
 
@@ -130,6 +138,7 @@ public class DroneMove : MonoBehaviour
         if(playerControllerScript.Interact.triggered && behindColliderScript.hackable == true)
         {
             Debug.Log("Hacking");
+            SwapSFX.Play();
             StartCoroutine(Set_Num_Spotted_Player(false));
             bool botsOff = false;
             behindColliderScript.hackable = false;
@@ -189,7 +198,8 @@ public class DroneMove : MonoBehaviour
         questionMark.SetActive(false);
         if (playerSpotted)
         {
-            playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+            //playerControllerScript.bots[playerControllerScript.prevBot].transform.position = playerSpawn.transform.position;
+            playerControllerScript.bots[playerControllerScript.prevBot].GetComponent<NavMeshAgent>().Warp(playerSpawn.transform.position);
 
             playerControllerScript.playerDied = true;
             //playerControllerScript.playerDied = false;
@@ -251,6 +261,8 @@ public class DroneMove : MonoBehaviour
     {
         On = false;
         droneSight.enabled = false;
+        DroneShutDownSFX.Play();
+        //BotScanningSFX.Pause();
         //Debug.Log("ShutdownDroneScript");
     }
 
@@ -300,6 +312,7 @@ public class DroneMove : MonoBehaviour
         On = true;
         droneSight.enabled = true;
         playerInControl = false;
+        //BotScanningSFX.Play();
         StopCoroutine(turnDroneOn());
     }
 
