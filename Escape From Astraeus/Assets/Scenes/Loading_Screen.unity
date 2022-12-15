@@ -1363,7 +1363,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1979052903}
-  sceneName: BotTesting
-  tuturialBackgrounds:
-  - {fileID: 444256084}
-  - {fileID: 695836327}
+  sceneName: Station_Level1
