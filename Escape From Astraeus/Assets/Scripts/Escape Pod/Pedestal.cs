@@ -9,9 +9,11 @@ public class Pedestal : MonoBehaviour
     private PlayerInventory playerInventory;
     public GameObject escapePod;
     private EscapePod escapePodScript;
+    [SerializeField] GameObject shipPartIndicator;
     // Start is called before the first frame update
     void Start()
     {
+        shipPartIndicator.SetActive(false);
         playerInventory = playerController.GetComponent<PlayerInventory>();
         escapePodScript = escapePod.GetComponent<EscapePod>();
     }
@@ -28,6 +30,7 @@ public class Pedestal : MonoBehaviour
         {
             if(playerInventory.Player_Ship_Parts[pedestal_Num] == true)
             {
+                shipPartIndicator.SetActive(true);
                 escapePodScript.have_Ship_part[pedestal_Num] = true;
             }
         }
