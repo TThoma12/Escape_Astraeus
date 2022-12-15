@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Loading_Screen.unity
     guid: a7aeec99d316d0c47ab0d34ad4fafcfe
+  - enabled: 1
+    path: Assets/Scenes/Mission_Complete_Screen.unity
+    guid: eb133522143e6084eb7112f14aac9d28
+  - enabled: 1
+    path: Assets/Scenes/Play_Again_Screen.unity
+    guid: af2e518d22bbd394a89c67593ace71e2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d3d7f1daefa8f894dbc73844a2459694, type: 2}
