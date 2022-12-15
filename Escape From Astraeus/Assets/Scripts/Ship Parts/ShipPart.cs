@@ -9,6 +9,9 @@ public class ShipPart : MonoBehaviour
     public int shipPart_ID;
     public GameObject playerController;
     private PlayerInventory playerInventory;
+    [SerializeField] AudioSource LocaIndicatorSFX;
+    
+
     void Start()
     {
         playerController = GameObject.Find("PlayerController");
@@ -25,7 +28,10 @@ public class ShipPart : MonoBehaviour
     {
         if(collider.gameObject.tag == "Player")
         {
+            playerInventory.playSFX();
+             //pickSFX.Play();
             Update_Player_Inv(shipPart_ID);
+           
             Destroy(gameObject);
         }
     }
@@ -33,5 +39,7 @@ public class ShipPart : MonoBehaviour
     void Update_Player_Inv(int shipPart)
     {
               playerInventory.Player_Ship_Parts[shipPart] = true;
+              //playerInventory.playSFX();
     }
+    
 }
