@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public CinemachineVirtualCamera mainCam;
     [SerializeField] private GameObject spawn;
     [SerializeField] private GameObject deathChecker;
+    [SerializeField] private string PlayerDeathScene;
    
 
     private void Awake() 
@@ -468,7 +470,8 @@ public class PlayerController : MonoBehaviour
     {
         if(currentLives == 0)
         {
-            Debug.Log("Game Over");
+            SceneManager.LoadScene(PlayerDeathScene);
+            //Debug.Log("Game Over");
         }
         
     }

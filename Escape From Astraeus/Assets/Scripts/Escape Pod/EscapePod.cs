@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EscapePod : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EscapePod : MonoBehaviour
      public bool[] have_Ship_part;
      private bool  hasAllParts;
      [SerializeField] private int totalShipParts;
+     [SerializeField] private string playerWinScene;
     
     void Start()
     {
@@ -21,6 +23,7 @@ public class EscapePod : MonoBehaviour
         if(have_Ship_part[0] && have_Ship_part[1] && have_Ship_part[2] && have_Ship_part[3])
         {
              Debug.Log("Player Escaped!");
+             SceneManager.LoadScene(playerWinScene);
         }
        
     }
