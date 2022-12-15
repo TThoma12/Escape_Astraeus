@@ -8,6 +8,7 @@ public class EscapePod : MonoBehaviour
      public bool[] have_Ship_part;
      private bool  hasAllParts;
      [SerializeField] private int totalShipParts;
+     [SerializeField] private AudioSource GameWinSFX;
     
     void Start()
     {
@@ -21,6 +22,7 @@ public class EscapePod : MonoBehaviour
         if(have_Ship_part[0] && have_Ship_part[1] && have_Ship_part[2] && have_Ship_part[3])
         {
              Debug.Log("Player Escaped!");
+             GameWinSFX.Play();
         }
        
     }

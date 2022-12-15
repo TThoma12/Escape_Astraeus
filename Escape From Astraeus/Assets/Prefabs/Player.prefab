@@ -115,6 +115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d061e1519f86409e7aed54b63e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotSwitch:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5561c4f3-7a3a-4845-b9de-4699152516bd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   Interact:
     m_Name: 
     m_Type: 0
@@ -131,7 +140,17 @@ MonoBehaviour:
   currentBot: 0
   prevBot: 0
   activeBot: 0
+  num_Spotted_Player: 0
+  droneMode: 0
+  playerLives: 3
+  currentLives: 0
   turnOff: 0
+  playerDied: 0
+  mainCam: {fileID: 0}
+  spawn: {fileID: 0}
+  deathChecker: {fileID: 0}
+  AlarmStateSFX: {fileID: 0}
+  DroneMovingSFX: {fileID: 0}
 --- !u!114 &5673696641834809873
 MonoBehaviour:
   m_ObjectHideFlags: 0

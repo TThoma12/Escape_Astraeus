@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject deathChecker;
     [SerializeField] private AudioSource AlarmStateSFX;
     [SerializeField] private AudioSource DroneMovingSFX;
+    public bool Moving;
+    [SerializeField] private Rigidbody currentBotRb;
+    [SerializeField] private  Vector3 oldPos, newPos, velocity;
+
     
    
 
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         move = playerControls.Player.Move;
         move.Enable();
+        move.performed += MoveTriggered;
 
         flyUp = playerControls.Player.FlyUp;
         flyUp.Enable();
@@ -56,6 +61,8 @@ public class PlayerController : MonoBehaviour
     private void OnDisable() 
     {   
         move.Disable();
+        move.canceled += MoveTriggeredDisabled;
+
         flyUp.Disable();
         BotSwitch.Disable();
         Interact.Disable();
@@ -65,6 +72,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //botsActivated[0] = true;
+        oldPos = bots[prevBot].transform.position;
         
     }
     void LateUpdate() 
@@ -483,16 +491,78 @@ public class PlayerController : MonoBehaviour
 
     void Update() 
     {
+         currentBotRb = bots[prevBot].GetComponent<Rigidbody>();
+       
+
+        newPos = bots[prevBot].transform.position;
+        var media =  (newPos - oldPos);
+        velocity = media /Time.deltaTime;
+        oldPos = newPos;
+        newPos = bots[prevBot].transform.position;
+
+        //Debug.Log(velocity);
+        if(velocity.x == 0)
+        {
+            Moving = false;
+           // StartCoroutine(DroneMovingSFXStop());
+        }
+
+        if (velocity.x != 0)
+        {
+            Moving = true;
+        }
+
+        if(Moving)
+        {
+            if(!DroneMovingSFX.isPlaying)
+            {
+                //Moving = true;
+                DroneMovingSFX.Play();
+            }
+        }
+        else
+        {
+            //DroneMovingSFX.Stop();
+            StartCoroutine(DroneMovingSFXStop());
+        }
+       
         
-       if(move.triggered)
-       {
-        //DroneMovingSFX.PlayOneShot(DroneMovingSFX, 1);
-       }
-       else
-       {
-        DroneMovingSFX.mute = true;
-       }
-        
+    }
+
+    void MoveTriggered(InputAction.CallbackContext move)
+    {
+        if(move.performed)
+        {
+            
+            if(!DroneMovingSFX.isPlaying)
+            {
+                //Moving = true;
+                //DroneMovingSFX.Play();
+            }
+             
+             //DroneMovingSFX.Stop();
+        }
+        else
+        {   
+            Moving = false;
+            DroneMovingSFX.Stop();
+        }
+    }
+
+    void MoveTriggeredDisabled(InputAction.CallbackContext move)
+    {
+        if(move.canceled)
+        {
+            Debug.Log("Stop");
+            StartCoroutine(DroneMovingSFXStop());
+        }
+    }
+
+    private IEnumerator DroneMovingSFXStop()
+    {
+        yield return new WaitForSeconds(1.5f);
+        DroneMovingSFX.Stop();
+        StopCoroutine(DroneMovingSFXStop());
     }
 
     public IEnumerator TurnOffAllBots()
