@@ -432,7 +432,7 @@ public class PlayerController : MonoBehaviour
           if (num_Spotted_Player == 2)
             {
                 //Debug.Log("Playing SFX");
-                AlarmStateSFX.Play();
+                //AlarmStateSFX.Play();
             }
       
       
@@ -480,11 +480,18 @@ public class PlayerController : MonoBehaviour
         //playerDied = false;
     }
 
+
     void playerDeath2()
     {
+        if(currentLives == 1)
+        {
+            //Debug.Log("PLAUY");
+            //AlarmStateSFX.Play();
+        }
         if(currentLives == 0)
         {
             Debug.Log("Game Over");
+            AlarmStateSFX.Play();
         }
         
     }
