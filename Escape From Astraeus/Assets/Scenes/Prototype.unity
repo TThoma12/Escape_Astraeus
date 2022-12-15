@@ -19475,6 +19475,10 @@ PrefabInstance:
       propertyPath: GameWinSFX
       value: 
       objectReference: {fileID: 104531698}
+    - target: {fileID: 2131908940666948869, guid: 4748f95dfdac6e149b461429628ae6a8, type: 3}
+      propertyPath: playerWinScene
+      value: Play_Again_Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 2131908940666948888, guid: 4748f95dfdac6e149b461429628ae6a8, type: 3}
       propertyPath: m_Name
       value: Escape Pod
