@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private InputAction flyUp;
     public InputAction BotSwitch;
     public InputAction Interact;
-    public float playeRotspeed = 50.0f;
-    public float playerSpeed = 5.0f;
+    public float playeRotspeed = 150.0f;
+    public float playerSpeed = 20.0f;
     private PlayerSwitcher playerSwitcher;
     private DroneMove droneMoveScript;
     private DroneSight droneSightScript;
@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
         //Player Movement
         moveDirection = move.ReadValue<Vector2>();
 
-        float forward = moveDirection.y * playerSpeed;
-        float rotate = moveDirection.x * playeRotspeed;
+        float forward = (moveDirection.y  * Time.deltaTime) * playerSpeed;
+        float rotate = (moveDirection.x  * Time.deltaTime )* playeRotspeed;
 
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;

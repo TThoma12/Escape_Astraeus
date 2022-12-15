@@ -2437,6 +2437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPart_ID: 1
   playerController: {fileID: 37835153}
+  LocaIndicatorSFX: {fileID: 0}
 --- !u!54 &267323682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3106,6 +3107,9 @@ MonoBehaviour:
   num_Spotted_Player: 0
   spottedNum: 0
   magnitizationScript: {fileID: 0}
+  BotScanningSFX: {fileID: 0}
+  SwapSFX: {fileID: 0}
+  DroneShutDownSFX: {fileID: 0}
 --- !u!195 &301039391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10360,6 +10364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPart_ID: 0
   playerController: {fileID: 37835153}
+  LocaIndicatorSFX: {fileID: 0}
 --- !u!1001 &1273402580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20253,6 +20258,10 @@ PrefabInstance:
     - target: {fileID: 6441134212852696546, guid: 325c6c92200287c48b3ebcef4a658dbb, type: 3}
       propertyPath: m_Name
       value: Pedestal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441134212852696546, guid: 325c6c92200287c48b3ebcef4a658dbb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6441134212852696550, guid: 325c6c92200287c48b3ebcef4a658dbb, type: 3}
       propertyPath: m_RootOrder
