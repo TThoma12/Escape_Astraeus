@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 1356472509}
   - component: {fileID: 1356472508}
   - component: {fileID: 1356472507}
+  - component: {fileID: 1356472511}
   m_Layer: 5
   m_Name: Game Over Canvas
   m_TagString: Untagged
@@ -759,6 +760,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1356472511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356472506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68190ff99dc88294abc3896ec78be925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLevelScene: BotTesting
+  mainMenuScene: Main_Menu
 --- !u!1 &1608523915
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +857,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1608523918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1356472511}
+        m_TargetAssemblyTypeName: PlayAgainSceneChange, Assembly-CSharp
+        m_MethodName: PlayAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1608523918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1261,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2033672315}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1356472511}
+        m_TargetAssemblyTypeName: PlayAgainSceneChange, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2033672315
 MonoBehaviour:
   m_ObjectHideFlags: 0
