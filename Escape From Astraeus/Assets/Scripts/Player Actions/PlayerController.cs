@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
         //Player Movement
         moveDirection = move.ReadValue<Vector2>();
 
-        float forward = (moveDirection.y  * Time.deltaTime) * playerSpeed;
-        float rotate = (moveDirection.x  * Time.deltaTime )* playeRotspeed;
+        float forward = moveDirection.y   * playerSpeed;
+        float rotate = moveDirection.x  * playeRotspeed;
 
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             {
                 case 0:
                     bots[0].transform.Translate(0,0,forward);
-                    bots[0].transform.Rotate(0,rotate,0);
+                    bots[0].transform.Translate(rotate,0,0);
                     droneMoveScript = bots[0].GetComponent<DroneMove>();
                     mainCam.m_Follow = bots[0].transform;
                     mainCam.m_LookAt = bots[0].transform;
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
                 case 1:
                     bots[1].transform.Translate(0,0,forward);
-                    bots[1].transform.Rotate(0,rotate,0);
+                    bots[1].transform.Translate(rotate,0,0);
                     droneMoveScript = bots[1].GetComponent<DroneMove>();
                     mainCam.m_Follow = bots[1].transform;
                     mainCam.m_LookAt = bots[1].transform;

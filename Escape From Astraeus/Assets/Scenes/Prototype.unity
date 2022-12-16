@@ -20515,6 +20515,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 760035192}
     - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
+      propertyPath: playerSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
       propertyPath: deathChecker
       value: 
       objectReference: {fileID: 1735184792}
@@ -20522,6 +20526,10 @@ PrefabInstance:
       propertyPath: AlarmStateSFX
       value: 
       objectReference: {fileID: 37835159}
+    - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
+      propertyPath: playeRotspeed
+      value: 4000
+      objectReference: {fileID: 0}
     - target: {fileID: 7999793384371106957, guid: e837af52234b84e4b8d0a40b8c079c68, type: 3}
       propertyPath: DroneMovingSFX
       value: 
