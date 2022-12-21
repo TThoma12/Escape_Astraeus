@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerControls;
     private InputAction move;
     private InputAction flyUp;
+    private InputAction fire;
     public InputAction BotSwitch;
     public InputAction Interact;
-    public float playeRotspeed = 150.0f;
-    public float playerSpeed = 20.0f;
+    public float playeRotspeed;
+    public float playerSpeed;
+    [SerializeField] private float playerModelRotSpeed;
     private PlayerSwitcher playerSwitcher;
     private DroneMove droneMoveScript;
     private DroneSight droneSightScript;
@@ -50,6 +52,9 @@ public class PlayerController : MonoBehaviour
 
         Interact = playerControls.Player.Interact;
         Interact.Enable();
+
+        //fire = playerControls.Player.fire;
+        //fire.Enable();
     }
 
     private void OnDisable() 
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
         flyUp.Disable();
         BotSwitch.Disable();
         Interact.Disable();
+        //fire.Disable();
     }
    
     // Start is called before the first frame update
@@ -77,8 +83,10 @@ public class PlayerController : MonoBehaviour
         //Player Movement
         moveDirection = move.ReadValue<Vector2>();
 
-        float forward = (moveDirection.y  * Time.deltaTime) * playerSpeed;
-        float rotate = (moveDirection.x  * Time.deltaTime )* playeRotspeed;
+        float forward = moveDirection.y   * playerSpeed;
+        float rotate = moveDirection.x  * playeRotspeed;
+
+        //forward.normalized
 
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
@@ -93,7 +101,8 @@ public class PlayerController : MonoBehaviour
             {
                 case 0:
                     bots[0].transform.Translate(0,0,forward);
-                    bots[0].transform.Rotate(0,rotate,0);
+                    bots[0].transform.Translate(rotate,0,0);
+                    //bots[0].transform.Rotate(0,bots[0].transform.position.y + 90,0);
                     droneMoveScript = bots[0].GetComponent<DroneMove>();
                     mainCam.m_Follow = bots[0].transform;
                     mainCam.m_LookAt = bots[0].transform;
@@ -104,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
                 case 1:
                     bots[1].transform.Translate(0,0,forward);
+                    bots[1].transform.Translate(rotate,0,0);
                     bots[1].transform.Rotate(0,rotate,0);
                     droneMoveScript = bots[1].GetComponent<DroneMove>();
                     mainCam.m_Follow = bots[1].transform;
@@ -478,12 +488,11 @@ public class PlayerController : MonoBehaviour
 
     void Update() 
     {
-        
-    //    if (turnOff)
-    //    {
-    //         StartCoroutine(TurnOffAllBots());
-           
-    //    }
+        // if(fire.triggered)
+        // {
+        //     Ray ray = mainCam.Screen
+        // }
+   
         
     }
 
