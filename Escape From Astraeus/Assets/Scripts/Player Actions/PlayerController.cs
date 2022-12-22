@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    Vector3 moveDirection;
+    Vector2 moveDirection;
     public PlayerInput playerControls;
     private InputAction move;
     private InputAction flyUp;
@@ -77,20 +77,25 @@ public class PlayerController : MonoBehaviour
         //LowerLives();
     }
 
+    void OnMove (InputAction.CallbackContext context)
+    {
+        
+       
+
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+         moveDirection = move.ReadValue<Vector2>();
         //Player Movement
-        moveDirection = move.ReadValue<Vector2>();
-
         float forward = moveDirection.y   * playerSpeed;
         float rotate = moveDirection.x  * playeRotspeed;
-
-        //forward.normalized
 
         forward *= Time.deltaTime;
         rotate *= Time.deltaTime;
 
+        Vector3 movement = new Vector3(moveDirection.x, 0f, moveDirection.y);
 
         //Sets which of the bots the player is controlling
         for(currentBot = 0; currentBot < botsActivated.Length; currentBot++)
@@ -100,8 +105,11 @@ public class PlayerController : MonoBehaviour
             switch (currentBot)
             {
                 case 0:
-                    bots[0].transform.Translate(0,0,forward);
-                    bots[0].transform.Translate(rotate,0,0);
+                   
+                    bots[0].transform.rotation = Quaternion.Slerp(bots[0].transform.rotation, Quaternion.LookRotation(movement), playerModelRotSpeed);
+                    bots[0].transform.Translate(movement * playerSpeed * Time.deltaTime, Space.World);
+                    //bots[0].transform.Rotate(0,rotate,0);
+                    //bots[0].transform.Translate(rotate,0,0);
                     //bots[0].transform.Rotate(0,bots[0].transform.position.y + 90,0);
                     droneMoveScript = bots[0].GetComponent<DroneMove>();
                     mainCam.m_Follow = bots[0].transform;
